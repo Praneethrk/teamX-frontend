@@ -1,0 +1,15 @@
+<div>
+    <header class="main-header">
+        <a>
+            <img src="assets/images/heraizen_logo.png" class="logo" />
+        </a>
+        <nav class="navbar navbar-fixed-top" style="height: 50px;">
+            <a href="#" class="sidebar-toggle" data-toggle="control-sidebar" role="button" (click)="resize()">
+                <span class="sr-only">Toggle navigation</span>
+            </a>
+            <span style=" color:#ffffff !important; margin-left: 1030px;" *ngIf="user">{{user.user}}
+            </span>
+            <i style=" color:#ffffff !important;" class="fas fa-sign-out-alt ml-auto" (click)="logOut()"></i>
+        </nav>
+    </header>
+</div>y

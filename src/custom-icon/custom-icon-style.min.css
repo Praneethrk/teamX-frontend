@@ -1,0 +1,173 @@
+@font-face {
+  font-family: 'icomoon';
+  src:  url('fonts/icomoon.eot?ebj1qh');
+  src:  url('fonts/icomoon.eot?ebj1qh#iefix') format('embedded-opentype'),
+    url('fonts/icomoon.ttf?ebj1qh') format('truetype'),
+    url('fonts/icomoon.woff?ebj1qh') format('woff'),
+    url('fonts/icomoon.svg?ebj1qh#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icomoon' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-wallet:before {
+  content: "\e900";
+}
+.icon-Vision_Mission:before {
+  content: "\e901";
+}
+.icon-university_details:before {
+  content: "\e902";
+}
+.icon-Total_Payment_Due:before {
+  content: "\e903";
+}
+.icon-Total_amount_collected:before {
+  content: "\e904";
+}
+.icon-Tooth:before {
+  content: "\e905";
+}
+.icon-Term_Fee:before {
+  content: "\e906";
+}
+.icon-Summary:before {
+  content: "\e907";
+}
+.icon-Students_present:before {
+  content: "\e908";
+}
+.icon-Students_Evaluated:before {
+  content: "\e909";
+}
+.icon-Student_not_evaluated:before {
+  content: "\e90a";
+}
+.icon-Student_absent:before {
+  content: "\e90b";
+}
+.icon-Service_request:before {
+  content: "\e90c";
+}
+.icon-Seminars:before {
+  content: "\e90d";
+}
+.icon-Scholarship:before {
+  content: "\e90e";
+}
+.icon-Scheme_Capture:before {
+  content: "\e90f";
+}
+.icon-request:before {
+  content: "\e910";
+}
+.icon-Preparation:before {
+  content: "\e911";
+}
+.icon-Portion-covered:before {
+  content: "\e912";
+}
+.icon-Planned:before {
+  content: "\e913";
+}
+.icon-Patents:before {
+  content: "\e914";
+}
+.icon-open-book:before {
+  content: "\e915";
+}
+.icon-Number_of_defaulters:before {
+  content: "\e916";
+}
+.icon-Mess_bill:before {
+  content: "\e917";
+}
+.icon-icon-right:before {
+  content: "\e918";
+}
+.icon-icon-left:before {
+  content: "\e919";
+}
+.icon-icon-cross:before {
+  content: "\e91a";
+}
+.icon-icon-calendar:before {
+  content: "\e91b";
+}
+.icon-girl:before {
+  content: "\e91c";
+}
+.icon-Fee_Template:before {
+  content: "\e91d";
+}
+.icon-family:before {
+  content: "\e91e";
+}
+.icon-Experience:before {
+  content: "\e91f";
+}
+.icon-Expense_Income_Mapping:before {
+  content: "\e920";
+}
+.icon-Executed:before {
+  content: "\e921";
+}
+.icon-Evaluate:before {
+  content: "\e922";
+}
+.icon-Degree_Creation:before {
+  content: "\e923";
+}
+.icon-Cycle_Management:before {
+  content: "\e924";
+}
+.icon-Curricular_gap:before {
+  content: "\e925";
+}
+.icon-Course_Management:before {
+  content: "\e926";
+}
+.icon-Content_beyond_syllabus:before {
+  content: "\e927";
+}
+.icon-Consolidated_to_tally:before {
+  content: "\e928";
+}
+.icon-Comparative-Score:before {
+  content: "\e929";
+}
+.icon-college_details:before {
+  content: "\e92a";
+}
+.icon-Check_in_out:before {
+  content: "\e92b";
+}
+.icon-browse:before {
+  content: "\e92c";
+}
+.icon-boy:before {
+  content: "\e92d";
+}
+.icon-Average_ageing:before {
+  content: "\e92e";
+}
+.icon-approved-plan:before {
+  content: "\e92f";
+}
+.icon-Admission_Fee:before {
+  content: "\e930";
+}

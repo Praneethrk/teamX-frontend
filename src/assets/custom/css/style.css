@@ -1,0 +1,53 @@
+my-date-picker .mydp{
+    border:none !important;
+}
+
+my-date-picker input{
+    
+    /*height: inherit !important;*/
+    font-size: inherit !important;
+    text-align: inherit !important;
+    font-family: 'Roboto', sans-serif !important;
+    color: inherit !important;
+    -webkit-appearance:none !important;
+    padding: 15px 0 5px;
+    top :8px !important;
+    pointer-events: none;
+
+}
+my-date-picker .btnleftborder{
+    border: none !important;
+}
+.mydp input.selection{
+    background: transparent !important;
+    
+}
+.formfields .input {
+    padding: 20px 18px 9px 0px;
+  
+}
+
+.mydp .selectiongroup{
+        background: transparent !important;
+}
+
+.mydp .btnclear, .mydp .btnpicker, .mydp .headertodaybtn {
+    background:transparent !important;
+}
+
+ng2-multiselect .dropdown.dropdown-inline{
+    min-width: 100% !important;
+    display:inherit;
+    position: inherit !important;
+}
+
+ng2-multiselect .dropdown-toggle{
+    min-width: 100% !important;
+    min-width: 100% !important;
+    background: none !important;
+    padding: 0 !important;
+    border-color: transparent !important;
+}
+ng2-multiselect .caret{
+    display: none !important;
+}

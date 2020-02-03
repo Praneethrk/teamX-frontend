@@ -1,0 +1,446 @@
+.card-body {
+    padding: 10px 20px!important;
+    min-height: 110px;
+    color:#00303F !important;
+    font-size: 0.875em !important;
+}
+.card-body > ul{
+    padding:18px;
+}
+.card-heading {
+    font-size:1em !important;
+}
+
+.card-heading-icon {
+    height: 4.5em !important;
+    background-color: white !important;
+    border:none !important;
+}
+
+.card-heading-icon-circle {
+    height: 3em !important;
+    width: 3em !important;
+    border-radius: 72% !important;
+    line-height: 3em !important;
+    float: left !important;
+    position: relative !important;
+    vertical-align: middle !important;
+    margin-right: 12px !important;
+    
+}
+
+.card-heading-icon-title {
+    line-height: 3em !important;
+    vertical-align: middle !important;
+}
+
+
+
+.circle-colour-attendance {
+    background: #00303F !important;
+    color: white !important;
+}
+
+.circle-colour-lesson-plan {
+    background: #7A9D96 !important;
+    color: white !important;
+   
+}
+.circle-colour{
+     background: #AF473C !important;
+     color: white !important;
+   
+}
+.circle-colour-internal {
+    background: #AF473C;
+    color: white !important;
+   
+}
+
+.circle-colour-co-curricular {
+    background: #2D8EA7;
+    color: white !important;
+}
+
+.circle-colour-internal-data {
+    background: #7A9D96 !important;
+    color: white !important;
+}
+
+
+.alert-card {
+    background: #cfa82b !important;
+    color: white !important;
+}
+
+.action-item-card {
+    background: #a94b3c !important;
+    color: white !important;
+}
+
+
+/**
+Non circle cards for students
+*/
+
+.panel-std-classtimetable {
+    background: #1d8da4 !important;
+    color: white !important;
+}
+
+.panel-std-project {
+    background: #C09F80 !important;
+    color: white !important;
+}
+.panel-std-placement {
+    background: #738e89 !important;
+    color: white !important;
+}
+
+
+
+.panel-std-noticeboard {
+    background: #6E7376 !important;
+    color: white !important;
+}
+
+.panel-std-alert {
+    background: #cfa82b !important;
+    color: white !important;
+}
+
+
+
+.panel-std-actionitem {
+    background: #AF473C !important;
+    color: white !important;
+}
+.evenrow{
+  background-color: #DFF0D4;
+}
+.oddrow{
+  background-color: #FAF8DF;
+}
+
+
+.panel-std-calendarevents {
+    background: #00303F !important;
+    color:white !important;
+}
+
+
+
+
+.panel-std-councelling {
+    background: #d8af31 !important;
+    color: white !important;
+}
+.panel-reports{
+    background: #0a0a40 !important;
+    color: #fff !important;
+}
+.panel-std-timetable{
+background: #73343f !important;
+    color: #fff !important;
+}
+.panel-std-attendance-report{
+background: #82768e !important;
+    color: #fff !important;
+}
+
+
+.panel-std-financial
+{
+    background-color: #d6b100;
+    color: white !important;
+    }
+.circle-colour-nba {
+    background: #bda07d !important;
+    color: white !important;
+    
+}
+
+.circle-colour-curricular-activity {
+    background: #1d8da4!important;
+    color: white !important;
+    
+}
+
+.circle-colour-feedback {
+    background: #9a9e9f !important;
+    color: white !important;
+}
+
+
+/**  End of non circle student css */
+
+/*.notice-board-card {
+    background: gray !important;
+    color: white !important;
+}*/
+
+.dashboard-pointer {
+    cursor: pointer;
+}
+
+
+/**
+**/
+
+.circle-colour {
+    background: #ab5457;
+    color: white !important;
+}
+
+.line-chart-color,
+.white-text {
+    color: white;
+}
+
+.panel-student-attendance,
+.panel-faculty-attendance {
+    background: #738E89 !important;
+    color: white !important;
+}
+
+
+.card-body>table>thead>tr {
+    font-size: 0.74em !important;
+}
+/** progress bar legend css**/
+.progress-legend li span{
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    margin-right: 5px;
+}
+.done-background-color{
+  background-color: #aacab9;
+}
+.todo-background-color{
+  background-color: #B57F79;
+}
+/*Attendance Compilance*/
+.class-planned,.class-executed,.class-meeting-executed,.class-meeting-planned,.class-meeting-missed{
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    color: black;
+  text-align: center;
+   padding-top: 10px;
+    font-size: 1.5em;
+    margin-bottom: 8px;
+}
+.class-planned{
+  background-color: #dff0d6;
+    margin-left: 10px;
+}
+.class-executed{
+  background-color: #f1dede;
+    margin-left: 15px;
+}
+
+.class-meeting-executed{
+    background-color: #dff0d6;
+      margin-left: 10px;
+  }
+  .class-meeting-planned{
+    background-color: #fcd68e;
+      margin-left: 10px;
+  }
+  .class-meeting-missed{
+    background-color: #f1dede;
+      margin-left: 10px;
+  }
+
+/*End of Attendance Compliance*/
+.status-open-color{
+color: goldenrod !important;
+}
+.status-closed-color{
+color: #738E89 !important;
+}
+hr.componentrow{
+     border-top: 0.03px solid #bfb5b5;
+   
+         margin-top: 0px!important;
+    margin-bottom: 11px !important;
+    margin-left: 0px!important;
+      margin-right: 0px!important;
+        width: 100%;
+}
+.faculty-images-alignment{
+        margin-left: 10%;
+}
+.scroll-faculty-images{
+    height: 82px;
+ border: 0.03px solid #bfb5b5;
+    overflow-y: scroll;
+    overflow-x:hidden;
+        
+             padding: 2%;
+
+}
+
+.certificate-color{
+        border: 1px #1D4A5E solid !important;
+        background-color: #1D4A5E;
+}
+.nba-color{
+      border: 1px #C09F80 solid !important;
+        background-color: #C09F80;
+}
+.back-color{
+color: white;
+}
+.imagerow{
+         margin-right: -15px!important;
+     margin-left: -15px!important;
+}
+.nba-box-highest{
+  border: 2.80px solid #1D4A5E;;
+     padding: 5.1%;
+    font-size: 0.96em;
+}
+.nba-box-lowest{
+  border: 2.80px solid goldenrod;;
+     padding: 5.1%;
+    font-size: 0.96em;
+}
+.nba-box-medium{
+  border: 2.80px solid #738E89;
+     padding: 5.1%;
+    font-size: 0.96em;
+}
+.progress-width{
+        width: 100%;
+            /*background-color:#738E89 !important;*/
+}
+.line-border{
+  border-right: 1px solid #ddd;
+  height: 50px;
+  
+}
+.div-padding{
+      padding-left: 50px;
+}
+.data-margin{
+  margin-left: -5px;
+}
+.degree-toggle{
+  color: #00303f;
+    font-family: Lato;
+    
+}
+.pointer{
+  cursor: pointer !important;
+}
+.margin-actioitem{
+    margin-bottom: 0px;
+}
+.pdf-icon{
+    font-size:35px;color:#00303f;
+}
+.toggle-margin{
+  margin-left: 33px;
+}
+.noticeboard-height{
+    height: 150px;
+}
+.notification-height{
+    height: 187px !important
+}
+.dashboard-card-height{
+  height:15em;
+}
+/*Css for progree meter*/
+.progress-meter {
+  padding: 0;
+}
+
+ol.progress-meter {
+  padding-bottom: 9.5px;
+  list-style-type: none;
+}
+ol.progress-meter li {
+  display: inline-block;
+  text-align: center;
+  text-indent: -19px;
+  height: 40px;
+  width: 12%;
+  font-size: 12px;
+  border-bottom-width: 4px;
+  border-bottom-style: solid;
+}
+ol.progress-meter li:before {
+  position: relative;
+  float: left;
+  text-indent: 0;
+  left: -webkit-calc(50% - 9.5px);
+  left: -moz-calc(50% - 9.5px);
+  left: -ms-calc(50% - 9.5px);
+  left: -o-calc(50% - 9.5px);
+  left: calc(50% - 9.5px);
+}
+ol.progress-meter li.done {
+  font-size: 12px;
+}
+ol.progress-meter li.done:before {
+  content: "\2713";
+  height: 20px;
+  width: 20px;
+  line-height: 21.85px;
+  bottom: -28.175px;
+  border: none;
+  border-radius: 19px;
+}
+ol.progress-meter li.todo {
+  font-size: 12px;
+}
+ol.progress-meter li.todo:before {
+  content: "\2B24";
+  font-size: 17.1px;
+  bottom: -26.95px;
+  line-height: 18.05px;
+}
+ol.progress-meter li.done {
+  color: black;
+  border-bottom-color: #3d9970;
+}
+ol.progress-meter li.done:before {
+  color: white;
+  background-color: #3d9970;
+}
+ol.progress-meter li.todo {
+  color: silver;
+  border-bottom-color: #AF473C;
+}
+ol.progress-meter li.todo:before {
+  color: #AF473C;
+}
+/*end of progress meter*/
+.container {
+  width: 100% !important;
+  margin: 0 auto;
+}
+.font-size{
+    font-size: .75em !important;
+}
+#progress {
+    position: relative;
+}
+.row-margin-calendarevent{
+  margin-top: 0.5em;
+}
+.project-progress-fontsize{
+font-size: 8px !important;
+width: 25% !important;
+}
+.attendance-chart{
+  width: 100%;
+    min-height: 160px;
+}
+.co-chart{
+  width: 100%;
+    min-height: 311px;
+}

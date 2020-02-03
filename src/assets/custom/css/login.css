@@ -1,0 +1,376 @@
+@charset "utf-8";
+/* CSS Document */
+*
+{
+  -o-box-sizing:border-box;
+  -ms-box-sizing:border-box;
+  -moz-box-sizing:border-box;
+  -webkit-box-sizing:border-box;
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+  font-style:normal;
+-o-transition:all ease .4s;
+-ms-transition:all ease .4s;
+-moz-transition:all ease .4s;
+-webkit-transition:all ease .4s;
+transition:all ease .4s;
+}
+a
+{
+  text-decoration:none !important
+}
+body
+{
+  font-family: 'Roboto', sans-serif;
+  overflow-x:hidden;
+}
+
+
+
+.login-wrapper
+{
+  float:left; width:100%; background:#000;
+ position:relative;}
+ .login-section-wrapper{float:left; width:100%;}
+.welcome-text
+{
+  font-size:15px;
+  font-weight:400;
+  color:#fff;
+}
+.welcome-text p
+{
+  font-size:19px;
+  font-weight:300;
+  line-height:25px;
+}
+.login-panel
+{
+  width:70%;
+  background:rgba(255, 255, 255, .7);
+}
+.login-panel .form
+{
+  float:left;
+  width:100%;
+}
+.login-panel .header
+{
+  float:left;
+  width:100%;
+  background:#fff;
+  padding:20px 0 0;
+}
+.form-logo
+{
+  float:left;
+  padding-left:10px;
+}
+.form-logo img
+{
+  height:40px;
+}
+.credentials
+{
+  float:right;
+  margin-top: 13px;
+}
+.credentials a
+{
+  padding:0 20px 28px;
+  position:relative;
+  float:left;
+}
+.credentials a:hover:before, .credentials a.active:before
+{
+  left:0;
+  right:0;
+  bottom:0;
+  position:absolute;
+  content:'';
+  background:#000;
+  height:4px;
+}
+.formset
+{
+  float:left;
+  width:100%;
+  padding:6vh 60px 12vh 60px;
+}
+.formset h2
+{
+  margin:0 0 2vh;
+  font-weight: 300;
+}
+.formset h2 span
+{
+  color:#fdce13
+}
+.formfields
+{
+  position:relative;
+  margin-bottom:10px;
+}
+.formset .formfields
+{
+  width:100%;
+  float:left;
+}
+.formfields .input
+{
+  padding:20px 10px 5px 0px;
+  background: none;
+  border:none;
+  width:100%;
+  border-bottom:1px solid #d0cdcd;
+  background-size:25px;
+  background-position:10px 10px;
+  background-repeat:no-repeat;
+}
+.login-form .formfields .input{padding:20px 10px 5px 50px;}
+.formfields .input.select
+{
+  -webkit-appearance:none;
+  -moz-appearance:none;
+  -o-appearance:none;
+  -ms-appearance:none;
+  appearance:none;
+  background-image:url(../../images/icons/down.png);
+  background-repeat:no-repeat;
+  background-size:10px;
+  background-position:97% center;
+  padding: 15px 0px 5px;
+  height:46px;
+}
+.formfields .input.select option
+{
+  padding:10px;
+}
+.formfields label
+{
+  position:absolute;
+  top:10px;
+  left:50px;
+  pointer-events:none;
+  font-weight:300;
+  font-size:15px;
+}
+.formfields .input:focus ~ label, .formfields .input.filled ~ label {
+top:0;
+font-size:12px;
+color:#6e6c63
+}
+.formset .form-buttons
+{
+  float:left;
+  width:100%;
+  margin-top:3vh;
+}
+.formset .form-buttons .submit
+{
+  padding:10px 50px 10px 20px;
+  border-radius:20px;
+  -webkit-border-radius:20px;
+  border:none;
+  color:#fdce13;
+  background:#000 url(../../images/login/3.png) no-repeat;
+  background-size:5px;
+  background-position:85% 50%;
+  text-transform: capitalize;
+}
+.formset .form-buttons .submit:hover
+{
+  background:#747474 url(../../images/login/3.png) no-repeat;
+  background-size:5px;
+  background-position:85% 50%;
+}
+.form-wrapper-footer
+{
+  position:absolute;
+  left:20px;
+  bottom:5px;
+}
+.form-wrapper-footer a
+{
+  color:#50504e;
+  position:relative;
+  padding-left:20px;
+  font-size:12px;
+}
+.form-wrapper-footer a:before
+{
+  content:'';
+  position:absolute;
+  right:-10px;
+  top:2px;
+  bottom:2px;
+  width:1px;
+  background:#676765;
+}
+.form-wrapper-footer a:first-child
+{
+  padding:0;
+}
+.form-wrapper-footer a:last-child:before
+{
+  display:none;
+}
+#login-name
+{
+  background-image:url(../../images/login/1.png);
+}
+#login-password
+{
+  background-image:url(../../images/login/2.png);
+}
+.register-form
+{
+  background:#fff;
+  position:absolute;
+  right:-500px;
+  top:0;
+  bottom:0;
+  overflow:auto;
+  width:500px;
+  padding:20px;
+  padding-bottom:50px;
+}
+.register-form.active
+{
+  right:0px;
+}
+.register-form h2
+{
+  font-weight:300;
+  font-size:20px;
+  margin:0;
+  padding-left:15px;
+}
+.registerform-wrapper
+{
+  padding:20px 20px 50px;
+}
+.no-padding-form .formfields{margin: 0 auto; width:300px;}
+.register-form .formfields .input,.no-padding-form .formfields .input
+{
+  padding-left:0px;
+}
+.register-form .formfields .input ~ label,.no-padding-form .formfields .input ~ label {
+left:0px;
+}
+.register-form .label
+{
+  text-align:left;
+  padding:0;
+}
+.register-form .label label
+{
+  color:#000;
+  text-align:left;
+  font-weight:300;
+  font-size:14px;
+}
+.register-form .divider
+{
+  margin-top:20px;
+  float:left;
+  width:100%;
+}
+.register-form .form-buttons
+{
+  margin-top:20px;
+}
+.register-form .form-group
+{
+  float:left;
+  width:100%;
+  margin-bottom:5px;
+}
+.input.radiobutton
+{
+  display:none;
+}
+.input.radiobutton ~ label {
+position:relative;
+padding-left:30px;
+font-weight:400
+}
+.input.radiobutton ~ label:before {
+width:20px;
+height:20px;
+left:0;
+top:0;
+content:'';
+background:#e1e1e1;
+border-radius:100%;
+position:absolute;
+}
+.input.radiobutton ~ label:after {
+width:14px;
+height:14px;
+left:3px;
+top:3px;
+border-radius:100%;
+background:#000;
+content:'';
+position:absolute;
+-ms-transform:scale(0);
+-o-transform:scale(0);
+-moz-transform:scale(0);
+-webkit-transform:scale(0);
+transform:scale(0);
+}
+.input.radiobutton:checked ~ label:after {
+-webkit-transform:scale(1);
+-moz-transform:scale(1);
+-ms-transform:scale(1);
+-o-transform:scale(1);
+transform:scale(1);
+}
+.addButton, .removeButton
+{
+  margin-top:12px;
+}
+.row-left
+{
+  margin-left:-15px;
+}
+.form-control-feedback
+{
+  display:none;
+  top:10px;
+}
+.has-error .form-control-feedback, .has-success .form-control-feedback
+{
+  display:block;
+}
+
+
+
+@media (min-width:768px)
+{
+  .login-wrapper{  position:fixed;
+  top:0;
+  bottom:0;
+  left:0;
+  right:0;
+  background:url(../../images/background/login.jpg) no-repeat;
+  background-size:100% 100%;
+}
+.login-section-wrapper
+{
+  position:absolute;
+  top:5vh;
+  bottom:5vh;
+  left:100px;
+  width:700px;
+  display:-webkit-flex;
+  display:flex;
+  -webkit-justify-content:space-between;
+  justify-content:space-between;
+  -webkit-flex-direction:column;
+  flex-direction:column;
+}
+
+ }

@@ -1,0 +1,30 @@
+<aside class="main-sidebar " id="navigation-bar">
+    <!-- sidebar: style can be found in sidebar.less -->
+    <section class="sidebar">
+        <!-- Sidebar user panel -->
+        <ul id="sidebar-list" class="sidebar-menu admin ">
+            <li class="treeview accordian">
+                <a class="tab-active">
+                    <i class="fa fa-bar-chart"></i>
+                    <span>Analytics</span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-right pull-right"></i>
+                    </span>
+                </a>
+
+                <ul class="treeview-menu treeview-menu2 treeview-menu-margin-padding">
+                    <li class="treeview treeview-menu2">
+                        <a class="tab-active" (click)="active(1)" [routerLink]="['/analytics/statement4']"
+                            [style.background-color]="1 === selectedIndex ? '#F3FBFE' : ''"
+                            [style.color]="1 === selectedIndex ? '#00303f' : ''">
+                            <i class="fa fa-circle-o sidebar-small-icons"></i>
+                            <span class="sidebar-font-family"><abbr>Statement-4</abbr></span>
+
+                        </a>
+                    </li>
+                </ul>
+
+            </li>
+        </ul>
+    </section>
+</aside>

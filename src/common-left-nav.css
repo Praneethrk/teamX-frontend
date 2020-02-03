@@ -1,0 +1,58 @@
+/*For direct */
+/*
+.skin-blue #sidebar-list.sidebar-menu>li.mastertemplate:hover>a,
+.skin-blue #sidebar-list.sidebar-menu>li.admissionfee:hover>a,
+.skin-blue #sidebar-list.sidebar-menu>li.feetemplate:hover>a,
+.skin-blue #sidebar-list.sidebar-menu>li.leavemanagement:hover>a,
+.skin-blue #sidebar-list.sidebar-menu>li.termfee:hover>a,
+.skin-blue #sidebar-list.sidebar-menu>li.mastertemplate.active>a,
+.skin-blue #sidebar-list.sidebar-menu>li.admissionfee.active>a,
+.skin-blue #sidebar-list.sidebar-menu>li.feetemplate.active>a,
+.skin-blue #sidebar-list.sidebar-menu>li.termfee.active>a,
+.skin-blue #sidebar-list.sidebar-menu>li.leavemanagement.active>a,
+
+{
+    border-right: 0px solid #F3FBFE !important;
+    background: #F3FBFE !important;
+    border-left-color: #00303f !important;
+    color: #00303f !important;
+}*/
+
+.skin-blue #sidebar-list.sidebar-menu>li:hover>a,
+.skin-blue #sidebar-list.sidebar-menu>li.active>a,
+
+{
+    border-right: 0px solid #F3FBFE !important;
+    background: #F3FBFE !important;
+    border-left-color: #00303f !important;
+    color: #00303f !important;
+}
+
+/*for accordion*/
+.skin-blue .treeview-menu>li.active>a, .skin-blue .treeview-menu>li>a:hover{
+border-right: 0px solid #F3FBFE !important;
+    background: #F3FBFE !important;
+    border-left-color: #00303f !important;
+    color: #00303f !important;
+}
+
+.skin-blue #sidebar-list.sidebar-menu>li.accordian:hover>a,
+.skin-blue #sidebar-list.sidebar-menu>li.accordian.active>a {
+    border-right: 0px solid #00303f !important;
+    background: #00303f !important;
+    border-left-color: #00303f !important;
+    color: #fff !important;
+    font-weight: bold;
+}
+.skin-blue #sidebar-list.sidebar-menu>li>ul>li.sub-accordion>a {
+    border-right: 0px solid #00303f !important;
+    background: #00303f !important;
+    border-left-color: #00303f !important;
+    color: #b8c7ce !important;
+}
+.skin-blue #sidebar-list.sidebar-menu>li>ul>li>ul>li.inside-sub-accordion>a {
+  border-right: 0px solid #00303f !important;
+  background: #00303f !important;
+  border-left-color: #00303f !important;
+  color: #b8c7ce !important;
+}
