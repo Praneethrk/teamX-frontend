@@ -21,4 +21,16 @@ export class AnalyticsService {
     let uri = `${this.url}get_semesters`;
     return this.http.get(uri);
   }
+
+
+
+  get_user_usn(email): Observable<any> {
+    let uri =`${this.url}get_user_usn/${email}`;
+    return this.http.get(uri);
+  }
+
+  get_placement_offers(term,usn): Observable<any> {
+    let uri = `${this.url}get_placement_offer/${term}/${usn}`;
+    return this.http.get(uri);
+  }
 }
