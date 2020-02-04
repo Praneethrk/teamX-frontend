@@ -17,17 +17,19 @@
         <span class="glyphicon glyphicon-search"></span> Search
       </button>
     </div>
-    <div class="row">
-        <div class="col-md-2">
-            <div *ngIf="offers && offers.length >0" class="w3-panel w3-card">
-                <div *ngFor="let o of offers">
-                    Company Name : {{o[0]}}<br/>
-                    Role : Software Developer<br/>
-                    Salary :{{o[1]}}
-                </div>
-                
-            </div>
-        </div>
+    
     </div>
+    <hr>
+    <div class="row">
+      <div class="col-md-2">
+          <div *ngIf="offers && offers.length >0" class="card w3-panel w3-card">
+              <div *ngFor="let o of offers">
+                  Company Name : {{o[0]}}<br/>
+                  Role : Software Developer<br/>
+                  Salary :{{o[1]}}
+              </div>
+              
+          </div>
+      </div>
 
 </div>

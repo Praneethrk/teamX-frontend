@@ -32,15 +32,13 @@ export class Statement4Component implements OnInit {
     })
 
     this.AnalyticsService.get_user_usn(user.user).subscribe(res=>{
-      this.usn = res["usn"];
+      this.usn = res["res"];
     })
   }
 
   onSearch(){
-    // this.event = event;
-    this.AnalyticsService.get_placement_offers(this.SelectedYear ,this.usn).subscribe(res=>{
+    this.AnalyticsService.get_placement_offers(this.SelectedYear, this.usn).subscribe(res=>{
         let result = res["res"];
-        console.log(result);
         for(let res of result)
         {
           this.offers.push([res['companyName'],res['salary']])
