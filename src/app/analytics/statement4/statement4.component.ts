@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { AnalyticsService } from '../analytics.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-statement4',
@@ -6,10 +8,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./statement4.component.css']
 })
 export class Statement4Component implements OnInit {
-
-  constructor() { }
+  academic: String[] = [];
+  semester: String[] = [];
+  constructor(private AnalyticsService: AnalyticsService) { }
 
   ngOnInit() {
+    this.AnalyticsService.get_academic_years().subscribe(res => {
+      this.academic = res['res'];
+    })
+    this.AnalyticsService.get_semesters().subscribe(res => {
+      this.semester = res["res"];
+    })
   }
 
 }

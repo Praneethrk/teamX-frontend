@@ -1,1 +1,22 @@
-<p>statement4 works!</p>
+<div class="container">
+    <div class="row">
+        <div class="col-md-2">
+            <select class="form-control">
+                <option value = "">-- Select Year --</option>
+                <option *ngFor = "let y of academic">{{y}}</option>
+            </select>
+        </div>
+        <div class="col-md-2">
+            <select class="form-control">
+                <option value = "">-- Select Semester --</option>
+                <option *ngFor = "let y of semester">{{y}}</option>
+            </select>
+        </div>
+        <div class="col-md-3">
+            <button type="button" class="btn btn-default">
+                <span class="glyphicon glyphicon-search"></span> Search
+              </button>
+        </div>
+    </div>
+
+</div>
