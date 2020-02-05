@@ -7,11 +7,15 @@ import { DummycomponentComponent } from './dummycomponent/dummycomponent.compone
 import { CommonHeaderComponent } from './common-header/common-header.component';
 import { CommonLeftNavComponent } from './common-left-nav/common-left-nav.component';
 import { CommonHeaderService } from './common-header/common-header.service';
-import { LoginComponent } from './login/login.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { TokenInterceptor } from './auth/auth.interceptor';
+import { LoginComponent } from './login/login.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatSelectModule } from '@angular/material/select';
 
+import { Ng2GoogleChartsModule } from 'ng2-google-charts';
+import {MatCardModule} from '@angular/material/card';
 
 
 @NgModule({
@@ -22,13 +26,16 @@ import { TokenInterceptor } from './auth/auth.interceptor';
     CommonHeaderComponent,
     LoginComponent
     
-    
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    MatSelectModule,
+    Ng2GoogleChartsModule,
+    BrowserAnimationsModule,
+    MatCardModule
 
     
   ],

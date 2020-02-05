@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { Statement4Component } from './statement4.component';
+import { CommonHeaderComponent } from './common-header.component';
 
-describe('Statement4Component', () => {
-  let component: Statement4Component;
-  let fixture: ComponentFixture<Statement4Component>;
+describe('CommonHeaderComponent', () => {
+  let component: CommonHeaderComponent;
+  let fixture: ComponentFixture<CommonHeaderComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ Statement4Component ]
+      declarations: [ CommonHeaderComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(Statement4Component);
+    fixture = TestBed.createComponent(CommonHeaderComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

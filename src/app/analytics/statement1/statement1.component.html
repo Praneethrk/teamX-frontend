@@ -1,0 +1,68 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-2">
+            <mat-label class="labels">Academic Year</mat-label>
+            <mat-select [(ngModel)]="selectedyear">
+                <mat-option></mat-option>
+                <mat-option *ngFor="let year of academicYears" [value]="year">{{year}}</mat-option>
+            </mat-select>
+        </div>
+        <div class="col-md-2">
+            <mat-label class="labels">Semesters</mat-label>
+            <mat-select name="terms" multiple [(ngModel)]="terms">
+                <mat-option *ngFor="let terms of termnumbers" [value]="terms">
+                    Semester - {{terms}}
+                </mat-option>
+            </mat-select>
+
+        </div>
+        <div class="col-md-1">
+            <button class="btn btn-primary search search-btn" (click)="searchbutton();" [disabled]=clicked>
+                <i class="fa fa-search ml-0"></i> Search
+            </button>
+
+        </div>
+        <div class="col-md-6">
+
+        </div>
+        <div class="col-md-1">
+            <button class="back-button" (click)="back_()" *ngIf="chart_visibility" style="float: right; margin: 10px;">
+                <span class="fa fa-chevron-left"></span> Back</button>
+        </div>
+    </div>
+    <div class="row">
+        <hr>
+
+    </div>
+    <div class="row" *ngIf="offers && offers.length >0">
+        <div *ngFor="let o of offers" class="col-sm-3">
+        <mat-card class="placement-card">
+            <!-- <mat-card-header>
+              <mat-card-title>Company Name : {{o[0]}}</mat-card-title>
+            </mat-card-header> -->
+            
+            <mat-card-content >
+                Company: {{o[0]}}<br />
+                    Role : Software Developer<br />
+                    Salary :{{o[1]}}
+            </mat-card-content>
+                
+        </mat-card>
+        </div>
+    </div>
+    <div class="row">
+        <hr>
+
+    </div>
+    <div class="row">
+        <div *ngIf="firstLevelChart && !error_flag && chart_visibility">
+            <p class="page-title"><b>{{title}}</b></p>
+            <google-chart [data]='firstLevelChart' (chartSelect)="second_level($event)">
+            </google-chart>
+        </div>
+        <div *ngIf="error_flag">
+            <p class="page-title">{{error_message}}</p>
+
+        </div>
+    </div>
+</div>

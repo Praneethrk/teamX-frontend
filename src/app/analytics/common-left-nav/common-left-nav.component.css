@@ -1,0 +1,109 @@
+#navigation-bar {
+    position: fixed;
+}
+
+.sub-treeview{
+    background-color: #00303f !important;
+    color: #b8c7ce !important;
+}
+.sub-title-menu-item{
+    padding-left: 23% !important;
+}
+
+.skin-blue #sidebar-list.sidebar-menu>li:hover>a,
+.skin-blue #sidebar-list.sidebar-menu>li.active>a,
+
+{
+    border-right: 0px solid #F3FBFE !important;
+    background: #F3FBFE !important;
+    border-left-color: #00303f !important;
+    color: #00303f !important;
+}
+
+/*for accordion*/
+.skin-blue .treeview-menu>li.active>a, .skin-blue .treeview-menu>li>a:hover{
+border-right: 0px solid #F3FBFE !important;
+    background: #F3FBFE !important;
+    border-left-color: #00303f !important;
+    color: #00303f !important;
+}
+
+.skin-blue #sidebar-list.sidebar-menu>li.accordian:hover>a,
+.skin-blue #sidebar-list.sidebar-menu>li.accordian.active>a {
+    border-right: 0px solid #00303f !important;
+    background: #00303f !important;
+    border-left-color: #00303f !important;
+    color: #fff !important;
+    font-weight: bold;
+}
+.skin-blue #sidebar-list.sidebar-menu>li>ul>li.sub-accordion>a {
+    border-right: 0px solid #00303f !important;
+    background: #00303f !important;
+    border-left-color: #00303f !important;
+    color: #b8c7ce !important;
+}
+
+/* @Author: Sandeep Duddagimath */
+.leftnav-dashboard {
+    padding-left: 4px !important;
+    vertical-align: middle;
+    display: flex;
+}
+
+.icon-dashboard {
+    margin-right: 8px;
+    margin-left: -4px;
+}
+
+.leftnav-sub-menu {
+    padding: 5px 5px 5px 42px !important;
+    margin-top: 0 !important;
+}
+
+.sidebar-menu > li {
+    margin: 0 !important;
+}
+
+.left-nav-accordian.active .pull-right-container {
+    -webkit-transform: rotate(180deg);
+    -moz-transform: rotate(180deg);
+    transform: rotate(90deg);
+    transition: all 0.5s;
+}
+
+#sidebar-list .side-link.active, .treeview-menu .tree-link.active {
+    background: rgb(255, 255, 255) !important;
+    color: #00303f !important;
+}
+
+.skin-blue .sidebar-menu>li:hover>a, .skin-blue .sidebar-menu>li.active {
+    background: #fff !important;
+    color: #00303f !important;
+}
+
+/* .skin-blue .sidebar-menu>li>ul>li:hover>a, .skin-blue .sidebar-menu>li>ul>li.active>a {
+    border-right: 0px solid #00303f !important;
+    background: #00303f !important;
+    border-left-color: #00303f !important;
+    color: #b8c7ce !important;
+}
+
+#sidebar-list.sidebar-menu > li > a:active {
+    background: #fff !important;
+    color: #00303f !important;
+} */
+
+.skin-blue #sidebar-list.sidebar-menu .left-nav-accordian > a:hover {
+    background: #fff !important;
+  }
+
+  .skin-blue  #sidebar-list.sidebar-menu>li>.treeview-menu>li>a:active {
+    color: #00303f !important;
+  }
+
+  .skin-blue .sidebar-menu>li.active>a {
+    background-color: #fff !important;
+    color: #00303f !important;
+  }
+
+/* Author: Sandeep CSS End*/

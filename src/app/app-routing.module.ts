@@ -5,6 +5,7 @@ import { DummycomponentComponent } from './dummycomponent/dummycomponent.compone
 import { AuthGuard } from './auth.guard';
 
 
+
 const routes: Routes = [
   {
     path: '',
@@ -12,20 +13,25 @@ const routes: Routes = [
     pathMatch: 'full'
   },
   {
-    path: 'login',
-    component: LoginComponent
+    path: '',
+    component: DummycomponentComponent
   },
   {
-    path: '',
-    component: DummycomponentComponent,
-    
+    path:'login',
+    component:LoginComponent
   },
+
   {
     path: 'analytics',
     component: DummycomponentComponent,
-    canActivate:[AuthGuard],
-    loadChildren:()=>import("./analytics/analytics.module").then(m=>m.AnalyticsModule)
+    canActivate: [AuthGuard],
+    loadChildren: () => import("./analytics/analytics.module").then(m => m.AnalyticsModule)
+
   },
+
+
+
+
 ];
 
 @NgModule({

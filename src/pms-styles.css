@@ -98,7 +98,8 @@ a {
 
 .page-title {
     color: #00303f !important;
-    font-size: 1em;
+    font-size: 2em;
+    text-align: center;
 }
 
 
@@ -254,7 +255,7 @@ a {
 }
 
 .content-wrapper {
-    background-color: #f3fbfd !important;
+    /* background-color: #f3fbfd !important; */
 }
 
 .main-header .logo {
@@ -2403,3 +2404,9 @@ body .mat-radio-ripple {
   }
  
 }
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

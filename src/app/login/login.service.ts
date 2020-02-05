@@ -12,7 +12,6 @@ export class LoginService {
 
   login(username:string){
     let url = `${this.env.baseUrl}login`;
-    // console.log(url)
     let user = {"username": username }
     return this.http.post<any>(url, user)
    

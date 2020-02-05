@@ -22,6 +22,7 @@ export class LoginComponent implements OnInit {
   loginWithTenant() {
     console.log(this.email);
          this.loginservice.login(this.email).subscribe(data => {
+           console.log("login",data)
          this.authService.setToken(data["access_token"]);
          this.loginservice.user().subscribe(data => {
            console.log("data",data)

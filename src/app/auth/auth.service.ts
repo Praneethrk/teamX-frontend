@@ -12,6 +12,7 @@ export class AuthService {
   constructor(private route:Router) { }
 
   setToken(token: string) {
+    console.log("token",token)
     localStorage.setItem("token", token);
     this.tanentDetails.next(token);
     return true;
