@@ -3,13 +3,13 @@
         <div class="col-md-2">
             <mat-label class="labels">Academic Year</mat-label>
             <mat-select [(ngModel)]="selectedyear">
-                <mat-option></mat-option>
+                <mat-option>--Select Year--</mat-option>
                 <mat-option *ngFor="let year of academicYears" [value]="year">{{year}}</mat-option>
             </mat-select>
         </div>
         <div class="col-md-2">
             <mat-label class="labels">Semesters</mat-label>
-            <mat-select name="terms" multiple [(ngModel)]="terms">
+            <mat-select name="terms" [(ngModel)]="terms">
                 <mat-option *ngFor="let terms of termnumbers" [value]="terms">
                     Semester - {{terms}}
                 </mat-option>
@@ -25,10 +25,6 @@
         <div class="col-md-6">
 
         </div>
-        <div class="col-md-1">
-            <button class="back-button" (click)="back_()" *ngIf="chart_visibility" style="float: right; margin: 10px;">
-                <span class="fa fa-chevron-left"></span> Back</button>
-        </div>
     </div>
     <div class="row">
         <hr>
@@ -36,15 +32,11 @@
     </div>
     <div class="row" *ngIf="offers && offers.length >0">
         <div *ngFor="let o of offers" class="col-sm-3">
-        <mat-card class="placement-card">
-            <!-- <mat-card-header>
-              <mat-card-title>Company Name : {{o[0]}}</mat-card-title>
-            </mat-card-header> -->
-            
+        <mat-card class="placement-card">            
             <mat-card-content >
-                Company: {{o[0]}}<br />
-                    Role : Software Developer<br />
-                    Salary :{{o[1]}}
+                <b>Company:</b> {{o[0]}}<br />
+                    <b>Role</b> : Software Developer<br />
+                   <b> Salary</b> :{{o[1]}}
             </mat-card-content>
                 
         </mat-card>
