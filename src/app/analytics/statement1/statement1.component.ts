@@ -32,13 +32,34 @@ export class Statement1Component implements OnInit {
   array;
   modelcourse: any;
   modelScore: any;
+  userRole: string[] = [];
   constructor(private analyticsService: AnalyticsService, private authService: AuthService) { }
 
   ngOnInit() {
     this.user_info = this.authService.getUserInfo()
-    this.get_academic_years()
-    this.get_term_numbers()
-    this.get_dept()
+    let arr = this.user_info["roles"];
+    console.log(arr)
+    if (this.user_info["roles"] == "STUDENT") {
+      this.userRole.push("STUDENT");
+      this.get_academic_years()
+      this.get_term_numbers()
+      this.get_dept()
+    }
+    else if (arr[0] == "FACULTY" && arr[2] == "PRINCIPAL") {
+      this.userRole.push("PRINCIPAL");
+      console.log("PRINCIPAL")
+    }
+    else if (arr[2] == "HOD") {
+      this.userRole.push("HOD");
+      this.get_academic_years()
+      this.get_term_numbers()
+      // employeeGivenId
+    }
+    else if (arr[0] == "FACULTY") {
+      this.userRole.push("FACULTY");
+      console.log("FACULTY")
+    }
+
   }
   get_academic_years() {
     this.analyticsService.get_academic_years().subscribe(res => {
@@ -110,17 +131,20 @@ export class Statement1Component implements OnInit {
           height: 500,
           vAxis: {
             title: "Performance %",
+            gridlines: { color: '#e0dbda', minSpacing: 50 },
           },
           hAxis: {
             title: "Courses",
+            gridlines: { color: '#e0dbda', minSpacing: 50 },
           },
           chartArea: {
             left: 80,
             right: 80,
             top: 100,
-            backgroundColor:"#faf6f2",
+            // backgroundColor:"#faf6f2",
           },
           legend: {
+
             position: "top",
             alignment: "end"
           },
@@ -128,20 +152,20 @@ export class Statement1Component implements OnInit {
           colors: ["#669999"],
           fontName: "Times New Roman",
           fontSize: 13,
-          focusTarget:"datum",
-        
+          focusTarget: "datum",
+
         }
       }
   }
 
-    //On chart select
-    onChartSelect(event:ChartSelectEvent){
-      this.array = event.selectedRowFormattedValues;
-      this.modelcourse = this.array[0];
-      this.modelScore = this.array[1];
-      }
+  //On chart select
+  onChartSelect(event: ChartSelectEvent) {
+    this.array = event.selectedRowFormattedValues;
+    this.modelcourse = this.array[0];
+    this.modelScore = this.array[1];
+  }
 
-     
+
 
 
 }
