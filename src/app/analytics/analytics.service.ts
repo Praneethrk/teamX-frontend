@@ -22,13 +22,6 @@ export class AnalyticsService {
 
   }
 
-  
-
-  get_user_usn(email): Observable<any> {
-    let uri =`${this.baseurl}get_user_usn/${email}`;
-    return this.http.get(uri);
-  }
-
   get_placement_offers(term,usn): Observable<any> {
     let uri = `${this.baseurl}get_placement_offer/${term}/${usn}`;
     return this.http.get(uri);
