@@ -1,0 +1,174 @@
+<!-- STUDENT -->
+<div *ngIf="userRole.includes('STUDENT')">
+  <div class="row">
+    <div class="col-md-2">
+      <mat-label class="labels">Academic Year</mat-label>
+      <mat-select [(ngModel)]="selectedyear">
+        <mat-option>--Select Year--</mat-option>
+        <mat-option *ngFor="let year of academicYears" [value]="year">{{year}}</mat-option>
+      </mat-select>
+    </div>
+    <div class="col-md-2">
+      <mat-label class="labels">Semesters</mat-label>
+      <mat-select name="terms" [(ngModel)]="terms">
+        <mat-option *ngFor="let terms of termnumbers" [value]="terms">
+          Semester - {{terms}}
+        </mat-option>
+      </mat-select>
+
+    </div>
+    <div class="col-md-1">
+      <button class="btn btn-primary search search-btn" (click)="searchbutton();" [disabled]=clicked>
+        <i class="fa fa-search ml-0"></i> Search
+      </button>
+
+    </div>
+    <div class="col-md-6">
+
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="row">
+      <hr>
+
+    </div>
+    <div class="row" *ngIf="offers && offers.length >0">
+      <div *ngFor="let o of offers" class="col-sm-3">
+        <mat-card class="placement-card">
+          <mat-card-content>
+            <b>Company:</b> {{o[0]}}<br />
+            <b>Role</b> : Software Developer<br />
+            <b> Salary</b> :{{o[1]}}
+          </mat-card-content>
+
+        </mat-card>
+      </div>
+    </div>
+    <div class="row">
+      <hr>
+
+    </div>
+    <div class="row">
+      <div *ngIf="firstLevelChart && !error_flag && chart_visibility">
+        <p class="page-title"><b>{{title}}</b></p>
+        <google-chart [data]='firstLevelChart' data-toggle="modal" data-target="#exampleModalCenter"
+          (chartSelect)="onChartSelect($event)">
+        </google-chart>
+      </div>
+      <div *ngIf="error_flag">
+        <p class="page-title">{{error_message}}</p>
+
+      </div>
+    </div>
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
+      aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h3 class="modal-title" id="exampleModalLongTitle"><b>University Exam Details</b></h3>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <p><b>Course Name : </b>{{modelcourse}}</p>
+            <hr>
+            <button class="btn btn-light"><b>UE Score : </b>{{modelScore}}</button>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary" data-dismiss="modal"><i class="far fa-thumbs-up"></i>
+              OK</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+<!-- STUDENT ENDS -->
+
+<!-- FACULTY STARTS -->
+<div *ngIf="userRole.includes('FACULTY')">
+  <div class="row">
+    <div class="col-md-2">
+      <mat-label class="labels">Academic Year</mat-label>
+      <mat-select [(ngModel)]="selectedyear">
+        <mat-option>--Select Year--</mat-option>
+        <mat-option *ngFor="let year of academicYears" [value]="year">{{year}}</mat-option>
+      </mat-select>
+    </div>
+    <div class="col-md-2">
+      <mat-label class="labels">Semesters</mat-label>
+      <mat-select name="terms" [(ngModel)]="terms">
+        <mat-option *ngFor="let terms of termnumbers" [value]="terms">
+          Semester - {{terms}}
+        </mat-option>
+      </mat-select>
+
+    </div>
+    <div class="col-md-1">
+      <button class="btn btn-primary search search-btn" (click)="searchButtonFaculty();" [disabled]=clicked>
+        <i class="fa fa-search ml-0"></i> Search
+      </button>
+
+    </div>
+    <div class="col-md-6">
+    </div>
+  </div>
+  <hr>
+  <div class="row">
+    <div class="col-md-2">
+      <button class="btn btn-default btn-light  btn-block faculty" *ngFor="let faculty of facultyNames">{{faculty}}</button>
+    </div>
+  </div>
+</div>
+<div class="row">
+   
+</div>
+<br>
+<!-- FACULTY ENDS -->
+
+<!-- HOD -->
+<div *ngIf="userRole.includes('HOD')">
+  <div class="row">
+    <div class="col-md-2">
+      <mat-label class="labels">Academic Year</mat-label>
+      <mat-select [(ngModel)]="selectedyear">
+        <mat-option>--Select Year--</mat-option>
+        <mat-option *ngFor="let year of academicYears" [value]="year">{{year}}</mat-option>
+      </mat-select>
+    </div>
+    <div class="col-md-2">
+      <mat-label class="labels">Semesters</mat-label>
+      <mat-select name="terms" [(ngModel)]="terms">
+        <mat-option *ngFor="let terms of termnumbers" [value]="terms">
+          Semester - {{terms}}
+        </mat-option>
+      </mat-select>
+
+    </div>
+    <div class="col-md-1">
+      <button class="btn btn-primary search search-btn" (click)="searchbuttonhod();" [disabled]=clicked>
+        <i class="fa fa-search ml-0"></i> Search
+      </button>
+
+    </div>
+    <div class="col-md-6">
+    </div>
+  </div>
+  <hr>
+  <div class="row">
+    <div class="col-md-2">
+      <button class="btn btn-default  btn-block faculty" *ngFor="let faculty of facultyNames">{{faculty}}</button>
+    </div>
+  </div>
+</div>
+<div class="row">
+   
+</div>
+<br>
+<!-- HOD  ENDS-->
+
+

@@ -3,14 +3,15 @@ import { AnalyticsService } from '../analytics.service';
 import { AuthService } from 'src/app/auth/auth.service';
 import { GoogleChartInterface } from 'ng2-google-charts/google-charts-interfaces';
 import { ChartSelectEvent } from 'ng2-google-charts';
+import { templateSourceUrl } from '@angular/compiler';
 
 
 @Component({
-  selector: 'app-statement1',
-  templateUrl: './statement1.component.html',
-  styleUrls: ['./statement1.component.css']
+  selector: 'app-statement4',
+  templateUrl: './statement4.component.html',
+  styleUrls: ['./statement4.component.css']
 })
-export class Statement1Component implements OnInit {
+export class Statement4Component implements OnInit {
   academicYears: string[] = [];
   termnumbers: [] = [];
   public firstLevelChart: GoogleChartInterface;
@@ -28,14 +29,42 @@ export class Statement1Component implements OnInit {
   offers: any[] = [];
   placement: boolean = false;
   ueScore;
+  array;
+  modelcourse: any;
+  modelScore: any;
+  userRole: string[] = [];
+  deptName: any;
+  facultyNames: any[] = [];
   constructor(private analyticsService: AnalyticsService, private authService: AuthService) { }
 
   ngOnInit() {
     this.user_info = this.authService.getUserInfo()
-    this.get_academic_years()
-    this.get_term_numbers()
-    this.get_dept()
+    let arr = this.user_info["roles"];
+    console.log(this.user_info)
+    if (this.user_info["roles"] == "STUDENT") {
+      this.userRole.push("STUDENT");
+      this.get_academic_years()
+      this.get_term_numbers()
+      this.get_dept()
+    }
+    else if (arr[0] == "FACULTY" && arr[2] == "PRINCIPAL") {
+      this.userRole.push("PRINCIPAL");
+      console.log("PRINCIPAL")
+    }
+    else if (arr[2] == "HOD") {
+      this.userRole.push("HOD");
+      this.get_academic_years()
+      this.get_term_numbers()
+      // employeeGivenId
+    }
+    else if (arr[0] == "FACULTY") {
+      this.userRole.push("FACULTY");
+      this.get_academic_years()
+      this.get_term_numbers()
+    }
+
   }
+  // STUDENT STARTS
   get_academic_years() {
     this.analyticsService.get_academic_years().subscribe(res => {
       this.academicYears = res['acdemicYear'];
@@ -103,20 +132,23 @@ export class Statement1Component implements OnInit {
         dataTable: data,
         options: {
           bar: { groupWidth: "13%" },
-          height: 400,
+          height: 500,
           vAxis: {
             title: "Performance %",
+            gridlines: { color: '#e0dbda', minSpacing: 50 },
           },
           hAxis: {
             title: "Courses",
+            gridlines: { color: '#e0dbda', minSpacing: 50 },
           },
           chartArea: {
             left: 80,
             right: 80,
             top: 100,
+            // backgroundColor:"#faf6f2",
           },
           legend: {
-            title:"x axis",
+
             position: "top",
             alignment: "end"
           },
@@ -124,7 +156,46 @@ export class Statement1Component implements OnInit {
           colors: ["#669999"],
           fontName: "Times New Roman",
           fontSize: 13,
+          focusTarget: "datum",
+
         }
       }
   }
+
+  //On chart select
+  onChartSelect(event: ChartSelectEvent) {
+    this.array = event.selectedRowFormattedValues;
+    this.modelcourse = this.array[0];
+    this.modelScore = this.array[1];
+  }
+  // STUDENT ENDS
+
+  //FACULTY STARTS
+
+  //FACULTY ENDS
+  searchButtonFaculty() {
+    this.get_faculty_details();
+  }
+  // HOD Starts
+  
+  searchbuttonhod() {
+    this.get_faculty_details();
+  }
+  get_faculty_details() {
+    let arr = this.user_info['employeeGivenId'];
+    let patt = new RegExp("[a-zA-z]*");
+    let res = patt.exec(arr);
+    this.deptName =res[0];
+    this.analyticsService.get_dept_faculty(this.deptName).subscribe(res => {
+      let result = res['res'];
+      for (let r of result) {
+        this.facultyNames.push([r['name']])
+      }
+    })
+  }
+  // HOD ENDS 
+
+
+
+
 }

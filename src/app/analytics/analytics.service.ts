@@ -36,4 +36,8 @@ export class AnalyticsService {
     let uri =`${this.baseurl}get_user_dept/${email}`;
     return this.http.get(uri);
   }
+  get_dept_faculty(dept): Observable<any>{
+    let uri = `${this.baseurl}get_dept_faculty/${dept}`;
+    return this.http.get(uri);
+  }
 }
