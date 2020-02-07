@@ -35,6 +35,7 @@ export class Statement4Component implements OnInit {
   userRole: string[] = [];
   deptName: any;
   facultyNames: any[] = [];
+  faculty:boolean = false;
   constructor(private analyticsService: AnalyticsService, private authService: AuthService) { }
 
   ngOnInit() {
@@ -174,12 +175,18 @@ export class Statement4Component implements OnInit {
 
   //FACULTY ENDS
   searchButtonFaculty() {
-    this.get_faculty_details();
+    if(!this.faculty){
+      this.get_faculty_details();
+      this.faculty = true;
+    }
   }
   // HOD Starts
   
   searchbuttonhod() {
+    if(!this.faculty){
     this.get_faculty_details();
+    this.faculty = true;
+  }
   }
   get_faculty_details() {
     let arr = this.user_info['employeeGivenId'];
