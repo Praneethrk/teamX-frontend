@@ -10,7 +10,7 @@
     </div>
     <div class="col-md-2">
       <mat-label class="labels">Semesters</mat-label>
-      <mat-select name="terms" [(ngModel)]="terms">
+      <mat-select name="terms" multiple [(ngModel)]="terms">
         <mat-option *ngFor="let terms of termnumbers" [value]="terms">
           Semester - {{terms}}
         </mat-option>
@@ -29,6 +29,7 @@
   </div>
 
   <div class="container">
+    <mat-spinner *ngIf="spinner==1"></mat-spinner>
     <div class="row">
       <hr>
 
@@ -101,7 +102,7 @@
     </div>
     <div class="col-md-2">
       <mat-label class="labels">Semesters</mat-label>
-      <mat-select name="terms" [(ngModel)]="terms">
+      <mat-select name="terms"  [(ngModel)]="terms">
         <mat-option *ngFor="let terms of termnumbers" [value]="terms">
           Semester - {{terms}}
         </mat-option>
@@ -118,11 +119,7 @@
     </div>
   </div>
   <hr>
-  <div class="row">
-    <div class="col-md-2">
-      <button class="btn btn-default btn-light  btn-block faculty" *ngFor="let faculty of facultyNames">{{faculty}}</button>
-    </div>
-  </div>
+ 
 </div>
 <div class="row">
    
@@ -142,7 +139,7 @@
     </div>
     <div class="col-md-2">
       <mat-label class="labels">Semesters</mat-label>
-      <mat-select name="terms" [(ngModel)]="terms">
+      <mat-select name="terms"  [(ngModel)]="terms">
         <mat-option *ngFor="let terms of termnumbers" [value]="terms">
           Semester - {{terms}}
         </mat-option>
