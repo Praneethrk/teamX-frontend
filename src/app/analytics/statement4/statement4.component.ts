@@ -3,7 +3,7 @@ import { AnalyticsService } from '../analytics.service';
 import { AuthService } from 'src/app/auth/auth.service';
 import { GoogleChartInterface } from 'ng2-google-charts/google-charts-interfaces';
 import { ChartSelectEvent } from 'ng2-google-charts';
-import { templateSourceUrl } from '@angular/compiler';
+import { templateSourceUrl, ThrowStmt } from '@angular/compiler';
 
 
 @Component({
@@ -36,10 +36,16 @@ export class Statement4Component implements OnInit {
   deptName: any;
   facultyNames: any[] = [];
   faculty:boolean = false;
+  ueAvg;
+  resul:String[] =[]
+  facultyId;
+  search;
   constructor(private analyticsService: AnalyticsService, private authService: AuthService) { }
 
   ngOnInit() {
+    this.search="false"
     this.user_info = this.authService.getUserInfo()
+    console.log(this.user_info)
     let arr = this.user_info["roles"];
     console.log(this.user_info)
     if (this.user_info["roles"] == "STUDENT") {
@@ -85,6 +91,7 @@ export class Statement4Component implements OnInit {
     })
   }
   searchbutton() {
+    this.showSpinner = true;
     if (!this.placement) {
 
       this.analyticsService.get_placement_offers(this.academicYears, this.user_info['usn']).subscribe(res => {
@@ -126,6 +133,8 @@ export class Statement4Component implements OnInit {
 
   }
   graph_data(data) {
+    let arr = this.user_info["roles"];
+    if (this.user_info["roles"] == "STUDENT") {
     this.showSpinner = false
     this.title = 'Course-wise Performence %',
       this.firstLevelChart = {
@@ -161,7 +170,53 @@ export class Statement4Component implements OnInit {
 
         }
       }
+ 
   }
+  else if (arr[0] == "FACULTY" && arr[2] == "PRINCIPAL") {
+  
+  }
+  else if (arr[2] == "HOD") {
+    this.showSpinner = false
+    this.title = 'Course-wise Performence %',
+      this.firstLevelChart = {
+        chartType: "ColumnChart",
+        dataTable: data,
+        options: {
+          bar: { groupWidth: "13%" },
+          height: 500,
+          vAxis: {
+            title: "Performance %",
+            gridlines: { color: '#e0dbda', minSpacing: 50 },
+          },
+          hAxis: {
+            title: "Courses",
+            gridlines: { color: '#e0dbda', minSpacing: 50 },
+          },
+          chartArea: {
+            left: 80,
+            right: 80,
+            top: 100,
+            // backgroundColor:"#faf6f2",
+          },
+          legend: {
+
+            position: "top",
+            alignment: "end"
+          },
+          seriesType: "bars",
+          colors: ["#669999"],
+          fontName: "Times New Roman",
+          fontSize: 13,
+          focusTarget: "datum",
+
+        }
+      }
+
+  }
+  else if (arr[0] == "FACULTY") {
+  }
+
+}
 
   //On chart select
   onChartSelect(event: ChartSelectEvent) {
@@ -181,12 +236,19 @@ export class Statement4Component implements OnInit {
     }
   }
   // HOD Starts
-  
-  searchbuttonhod() {
-    if(!this.faculty){
-    this.get_faculty_details();
-    this.faculty = true;
+  getFacultyId(empId){
+    this.facultyId = empId
+    console.log(empId)
+    this.get_faculty_stud_ue(this.facultyId);
   }
+
+  searchbuttonhod() {
+    this.get_faculty_details();
+    if(this.search){
+      this.get_faculty_stud_ue(this.facultyId);
+    
+  }
+  this.search = "true"
   }
   get_faculty_details() {
     let arr = this.user_info['employeeGivenId'];
@@ -194,12 +256,42 @@ export class Statement4Component implements OnInit {
     let res = patt.exec(arr);
     this.deptName =res[0];
     this.analyticsService.get_dept_faculty(this.deptName).subscribe(res => {
-      let result = res['res'];
-      for (let r of result) {
-        this.facultyNames.push([r['name']])
-      }
+      this.resul = res['res'];
+      console.log(this.resul)
+      
     })
   }
+  get_faculty_stud_ue(facultyId){
+    this.analyticsService.get_faculty_stud_ue(facultyId,this.academicYears,this.terms).subscribe(res =>{
+      this.ueAvg = res['res'];
+      console.log(this.ueAvg);
+      this.ueAvarage(this.ueAvg);
+    })
+  }
+
+  ueAvarage(data) {
+    let dataTable = []
+    dataTable.push([
+      "course",
+      "avg"
+    ]);
+    for (let d of data) {
+      dataTable.push([d['course'], d['avg']]);
+
+    }
+    if (dataTable.length > 1) {
+      this.chart_visibility = true
+      this.error_flag = false
+      this.graph_data(dataTable)
+    }
+    else {
+      this.error_flag = true
+      this.error_message = "Data doesnot exist for the entered criteria"
+    }
+
+  }
+  
+  
   // HOD ENDS 
 
 

@@ -40,4 +40,14 @@ export class AnalyticsService {
     let uri = `${this.baseurl}get_dept_faculty/${dept}`;
     return this.http.get(uri);
   }
+
+  get_faculty_stud_ue(empid,year,term): Observable<any>{
+    let uri = `${this.baseurl}get_faculty_stud_ue/${empid}/${year}/${term}`;
+    return this.http.get(uri);
+  }
+
+  get_faculty_stud_placement(empid,term,course): Observable<any>{
+    let uri = `${this.baseurl}get_facul_stud_placement/${empid}/${term}/${course}`;
+    return this.http.get(uri);
+  }
 }

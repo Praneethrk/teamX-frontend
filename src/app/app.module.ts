@@ -16,7 +16,7 @@ import { MatSelectModule } from '@angular/material/select';
 
 import { Ng2GoogleChartsModule } from 'ng2-google-charts';
 import {MatCardModule} from '@angular/material/card';
-
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 @NgModule({
   declarations: [
@@ -35,7 +35,8 @@ import {MatCardModule} from '@angular/material/card';
     MatSelectModule,
     Ng2GoogleChartsModule,
     BrowserAnimationsModule,
-    MatCardModule
+    MatCardModule,
+    MatProgressSpinnerModule
 
     
   ],

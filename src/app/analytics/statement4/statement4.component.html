@@ -61,6 +61,9 @@
 
       </div>
     </div>
+    <div class="spinner" *ngIf="showSpinner">
+      <mat-spinner></mat-spinner>
+    </div>
     <!-- Modal -->
     <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
       aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
@@ -120,12 +123,13 @@
   <hr>
   <div class="row">
     <div class="col-md-2">
-      <button class="btn btn-default btn-light  btn-block faculty" *ngFor="let faculty of facultyNames">{{faculty}}</button>
+      <button class="btn btn-default btn-light  btn-block faculty"
+        *ngFor="let faculty of facultyNames">{{faculty}}</button>
     </div>
   </div>
 </div>
 <div class="row">
-   
+
 </div>
 <br>
 <!-- FACULTY ENDS -->
@@ -161,14 +165,26 @@
   <hr>
   <div class="row">
     <div class="col-md-2">
-      <button class="btn btn-default  btn-block faculty" *ngFor="let faculty of facultyNames">{{faculty}}</button>
+      <button class="btn btn-light btn-block text-left faculty" *ngFor="let re of resul"
+        (click)="getFacultyId(re['employeeGivenId'])" >{{re['name']}}
+      </button>
+    </div>
+    <div class="col-md-10">
+      <div *ngIf="firstLevelChart && !error_flag && chart_visibility">
+        <p class="page-title"><b>{{title}}</b></p>
+        <google-chart [data]='firstLevelChart' data-toggle="modal" data-target="#exampleModalCenter"
+          (chartSelect)="onChartSelect($event)">
+        </google-chart>
+      </div>
+      <div *ngIf="error_flag">
+        <p class="page-title">{{error_message}}</p>
+
+      </div>
     </div>
   </div>
 </div>
 <div class="row">
-   
+
 </div>
 <br>
 <!-- HOD  ENDS-->
-
-
