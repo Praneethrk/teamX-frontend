@@ -6,7 +6,7 @@ import { Statement4Component } from './statement4/statement4.component';
 import { AnalyticsComponent } from './analytics.component';
 import { HttpClientModule } from '@angular/common/http';
 // import {Ng2GoogleChartModule} from 'ng2-googlechart';
-import { Ng2GoogleChartsModule } from "ng2-google-charts";
+import { Ng2GoogleChartsModule } from 'ng2-google-charts';
 
 import {MatSelectModule} from '@angular/material/select';
 import { FormsModule } from '@angular/forms';
@@ -23,7 +23,7 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
     FormsModule,
     Ng2GoogleChartsModule,
     MatCardModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
   ]
 })
 export class AnalyticsModule { }

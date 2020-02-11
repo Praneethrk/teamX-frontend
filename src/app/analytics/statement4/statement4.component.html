@@ -1,5 +1,5 @@
 <!-- STUDENT -->
-<div *ngIf="userRole.includes('STUDENT')">
+<ng-container *ngIf="userRole.includes('STUDENT'); else elseTemplate">
   <div class="row">
     <div class="col-md-2">
       <mat-label class="labels">Academic Year</mat-label>
@@ -18,7 +18,7 @@
 
     </div>
     <div class="col-md-1">
-      <button class="btn btn-primary search search-btn" (click)="searchbutton();" [disabled]=clicked>
+      <button class="btn btn-primary search search-btn" (click)="searchbuttonStud();" [disabled]=clicked>
         <i class="fa fa-search ml-0"></i> Search
       </button>
 
@@ -62,6 +62,9 @@
 
       </div>
     </div>
+    <div class="spinner" *ngIf="showSpinner">
+      <mat-spinner></mat-spinner>
+    </div>
     <!-- Modal -->
     <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
       aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
@@ -85,13 +88,15 @@
         </div>
       </div>
     </div>
-  </div>
+
 
 </div>
+</ng-container>
 <!-- STUDENT ENDS -->
 
-<!-- FACULTY STARTS -->
-<div *ngIf="userRole.includes('FACULTY')">
+<!-- FACULTY , HOD , PRINCIPAL STARTS -->
+<ng-template #elseTemplate>
+<!-- <div *ngIf="userRole.includes('FACULTY')"> -->
   <div class="row">
     <div class="col-md-2">
       <mat-label class="labels">Academic Year</mat-label>
@@ -100,6 +105,14 @@
         <mat-option *ngFor="let year of academicYears" [value]="year">{{year}}</mat-option>
       </mat-select>
     </div>
+    <div class="col-md-2" *ngIf="userRole.includes('PRINCIPAL')">
+      <mat-form-field>
+          <mat-label class="labels">Select Department</mat-label>
+          <mat-select name="years" [(ngModel)]="selectedDepatment">
+              <mat-option *ngFor="let y of departments" [value]="y">{{y}}</mat-option>
+          </mat-select>
+      </mat-form-field>
+  </div>
     <div class="col-md-2">
       <mat-label class="labels">Semesters</mat-label>
       <mat-select name="terms"  [(ngModel)]="terms">
@@ -109,8 +122,8 @@
       </mat-select>
 
     </div>
-    <div class="col-md-1">
-      <button class="btn btn-primary search search-btn" (click)="searchButtonFaculty();" [disabled]=clicked>
+    <div class="col-md-2">
+      <button class="btn btn-primary search search-btn" (click)="searchbutton();" [disabled]=clicked>
         <i class="fa fa-search ml-0"></i> Search
       </button>
 
@@ -118,54 +131,39 @@
     <div class="col-md-6">
     </div>
   </div>
+  
   <hr>
- 
-</div>
-<div class="row">
-   
-</div>
-<br>
-<!-- FACULTY ENDS -->
 
-<!-- HOD -->
-<div *ngIf="userRole.includes('HOD')">
   <div class="row">
-    <div class="col-md-2">
-      <mat-label class="labels">Academic Year</mat-label>
-      <mat-select [(ngModel)]="selectedyear">
-        <mat-option>--Select Year--</mat-option>
-        <mat-option *ngFor="let year of academicYears" [value]="year">{{year}}</mat-option>
-      </mat-select>
-    </div>
-    <div class="col-md-2">
-      <mat-label class="labels">Semesters</mat-label>
-      <mat-select name="terms"  [(ngModel)]="terms">
-        <mat-option *ngFor="let terms of termnumbers" [value]="terms">
-          Semester - {{terms}}
-        </mat-option>
-      </mat-select>
-
-    </div>
-    <div class="col-md-1">
-      <button class="btn btn-primary search search-btn" (click)="searchbuttonhod();" [disabled]=clicked>
-        <i class="fa fa-search ml-0"></i> Search
+    <div class="col-sm-2 faculty-list text-left" *ngIf="userRole.includes('HOD') || userRole.includes('PRINCIPAL')">
+      <div *ngIf="resul.length>0" class="h4 font-weight-bold">Faculties</div>
+    <div>
+      <button class="btn btn-light btn-block text-left faculty" *ngFor="let re of resul"
+        (click)="getFacultyId(re['employeeGivenId'])" >{{re['name']}}
       </button>
-
-    </div>
-    <div class="col-md-6">
     </div>
   </div>
-  <hr>
-  <div class="row">
-    <div class="col-md-2">
-      <button class="btn btn-default  btn-block faculty" *ngFor="let faculty of facultyNames">{{faculty}}</button>
+  <ng-container *ngIf="userRole.includes('HOD') || userRole.includes('PRINCIPAL'); else elseTemplate">
+    <div class="col-md-10">
+  </ng-container>
+  <ng-template #elseTemplate>
+    <div class="col-md-12"></div>
+  </ng-template>
+  
+    
+      <!-- <div class="col-md-10"> -->
+      <div *ngIf="firstLevelChart && !error_flag && chart_visibility">
+        <p class="page-title"><b>{{title}}</b></p>
+        <google-chart [data]='firstLevelChart' data-toggle="modal" data-target="#exampleModalCenter"
+          (chartSelect)="onChartSelect($event)">
+        </google-chart>
+      </div>
+      <div *ngIf="error_flag">
+        <p class="page-title">{{error_message}}</p>
+
+      </div>
     </div>
   </div>
-</div>
-<div class="row">
-   
-</div>
-<br>
-<!-- HOD  ENDS-->
+<!-- FACULTY , HOD , PRINCIPAL ENDS -->
 
-
+</ng-template>  

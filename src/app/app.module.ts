@@ -36,7 +36,7 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
     Ng2GoogleChartsModule,
     BrowserAnimationsModule,
     MatCardModule,
-    MatProgressSpinnerModule,
+    MatProgressSpinnerModule
 
     
   ],
