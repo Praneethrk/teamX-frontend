@@ -33,14 +33,21 @@ export class Statement4Component implements OnInit {
   array;
   modelcourse: any;
   modelScore: any;
-  userRole: string[] = [];
+  userRole:String[] = [];
+  userR:any;
+  facultyId;;
   deptName: any;
   facultyNames: any[] = [];
   faculty: boolean = false;
   ueAvg;
   resul: String[] = []
-  facultyId;
   search;
+  departments;
+  selectedDepatment;
+  selectedSubject;
+  placementDetails;
+  ueMarks;
+  facultyName;
   constructor(private analyticsService: AnalyticsService, private authService: AuthService) { }
 
   ngOnInit() {
@@ -51,24 +58,32 @@ export class Statement4Component implements OnInit {
     console.log(this.user_info)
     if (this.user_info["roles"] == "STUDENT") {
       this.userRole.push("STUDENT");
-      this.get_academic_years()
-      this.get_term_numbers()
-      this.get_dept()
+      this.userR = "STUDENT"
+      this.get_academic_years();
+      this.get_term_numbers();
+      this.get_dept();
     }
     else if (arr[0] == "FACULTY" && arr[2] == "PRINCIPAL") {
+      this.analyticsService.get_depts().subscribe(res => {
+        this.departments = res["depts"]
+      })
       this.userRole.push("PRINCIPAL");
-      console.log("PRINCIPAL")
+      this.userR = "PRINCIPAL"
+      this.get_academic_years();
+      this.get_term_numbers();
     }
     else if (arr[2] == "HOD") {
       this.userRole.push("HOD");
-      this.get_academic_years()
-      this.get_term_numbers()
+      this.userR = "HOD"
+      this.get_academic_years();
+      this.get_term_numbers();
       // employeeGivenId
     }
     else if (arr[0] == "FACULTY") {
       this.userRole.push("FACULTY");
-      this.get_academic_years()
-      this.get_term_numbers()
+      this.userR = "FACULTY"
+      this.get_academic_years();
+      this.get_term_numbers();
     }
 
   }
@@ -138,13 +153,16 @@ export class Statement4Component implements OnInit {
     let arr = this.user_info["roles"];
     if (this.user_info["roles"] == "STUDENT") {
       this.showSpinner = false
+      var chartwidth = $('#chartparent').width();
       this.title = 'Course-wise Performence %',
         this.firstLevelChart = {
           chartType: "ColumnChart",
           dataTable: data,
+
           options: {
             bar: { groupWidth: "13%" },
-            height: 500,
+            height: $(window).height()*0.75,
+            width: chartwidth,
             vAxis: {
               title: "Performance %",
               gridlines: { color: '#e0dbda', minSpacing: 50 },
@@ -154,6 +172,7 @@ export class Statement4Component implements OnInit {
               gridlines: { color: '#e0dbda', minSpacing: 50 },
             },
             chartArea: {
+              width:chartwidth,
               left: 80,
               right: 80,
               top: 100,
@@ -174,12 +193,14 @@ export class Statement4Component implements OnInit {
         }
 
     } else {
+      var chartwidth = $('#chartparent').width();
       this.showSpinner = false;
       this.chart_visibility = true;
       this.title = 'Course-wise UE Marks %',
         this.firstLevelChart = {
           chartType: "ComboChart",
           dataTable: data,
+          
           options: {
             focusTarget: 'datum',
             bar: { groupWidth: "20%" },
@@ -189,15 +210,15 @@ export class Statement4Component implements OnInit {
               maxValue: '100',
               minValue: '0'
             },
-
-            height: 600,
-            width: 1000,
+            height: $(window).height()*0.75,
+            width: chartwidth,
             hAxis: {
               title: "Courses",
               titleTextStyle: {
               }
             },
             chartArea: {
+              width:chartwidth,
               left: 80,
               right: 100,
               top: 100,
@@ -220,22 +241,45 @@ export class Statement4Component implements OnInit {
 
   //On chart select
   onChartSelect(event: ChartSelectEvent) {
-    this.array = event.selectedRowFormattedValues;
-    this.modelcourse = this.array[0];
-    this.modelScore = this.array[1];
+    console.log(event.selectedRowValues)
+    if (this.user_info["roles"] == "STUDENT") {
+      this.array = event.selectedRowFormattedValues;
+      this.modelcourse = this.array[0];
+      this.modelScore = this.array[1];
+    } else {
+      this.array = event.selectedRowFormattedValues;
+      this.selectedSubject = event.selectedRowValues[0]
+        this.analyticsService.get_faculty_stud_ue(this.selectedEmp, this.academicYears, this.terms).subscribe(res => {
+          let result = res["res"]
+          this.ueMarks = this.array[1]
+        },
+        err=>{},
+        ()=>{
+          this.analyticsService.get_faculty_stud_placement(this.selectedEmp,this.terms,this.selectedSubject).subscribe(res=>{
+            this.placementDetails = [res['totalStudents'], res['placedStudents'], res['totalPositions']]
+          },
+          err=>{},
+          ()=>{
+            // $('#iaMarks').modal('toggle')
+          }
+          )
+        }
+        )
+    }
   }
   // STUDENT ENDS
 
 
 
-  getFacultyId(empId) {
+  getFacultyId(empId,empName) {
     this.facultyId = empId
+    this.facultyName = empName
     console.log(empId);
     this.get_faculty_stud_ue(this.facultyId);
   }
 
   searchbutton() {
-    if (this.user_info["roles"] == "FACULTY") {
+    if (this.userR == "FACULTY") {
       this.get_faculty_stud_ue(this.user_info['employeeGivenId']);
     } else {
       this.get_faculty_details();
@@ -248,10 +292,15 @@ export class Statement4Component implements OnInit {
 
   }
   get_faculty_details() {
-    let arr = this.user_info['employeeGivenId'];
-    let patt = new RegExp("[a-zA-z]*");
-    let res = patt.exec(arr);
-    this.deptName = res[0];
+    if (this.userR == "FACULTY" ||this.userR == "HOD") {
+      let arr = this.user_info['employeeGivenId'];
+      let patt = new RegExp("[a-zA-z]*");
+      let res = patt.exec(arr);
+      this.deptName = res[0];
+    }
+    else {
+      this.deptName = this.selectedDepatment;
+    }
     this.analyticsService.get_dept_faculty(this.deptName).subscribe(res => {
       this.resul = res['res'];
     })
@@ -265,7 +314,7 @@ export class Statement4Component implements OnInit {
     this.showSpinner = true;
     this.chart_visibility = false;
     let subs;
-    let data = [["Subject Name", "IA score", "Placement"]]
+    let data = [["Subject Name", "UE Performance", "Placement"]]
     this.analyticsService.get_faculty_stud_ue(this.selectedEmp, this.academicYears, this.terms).subscribe(res => {
       subs = res['res'];
     },
@@ -273,8 +322,7 @@ export class Statement4Component implements OnInit {
       () => {
 
         for (let s of subs) {
-          //console.log(s)
-          data.push([s['courseName'], s['uePercentage'], s['placePercentage']])
+          data.push([s['course'], s['uePercentage'], s['placePercentage']])
         }
         if (data.length > 1) {
           this.graph_data(data)

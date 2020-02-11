@@ -3,14 +3,14 @@
   <div class="row">
     <div class="col-md-2">
       <mat-label class="labels">Academic Year</mat-label>
-      <mat-select [(ngModel)]="selectedyear">
-        <mat-option>--Select Year--</mat-option>
+      <mat-select [(ngModel)]="selectedyear" placeholder="Select year">
+        <!-- <mat-option>--Select Year--</mat-option> -->
         <mat-option *ngFor="let year of academicYears" [value]="year">{{year}}</mat-option>
       </mat-select>
     </div>
     <div class="col-md-2">
       <mat-label class="labels">Semesters</mat-label>
-      <mat-select name="terms" multiple [(ngModel)]="terms">
+      <mat-select name="terms" multiple [(ngModel)]="terms" placeholder="Select semester">
         <mat-option *ngFor="let terms of termnumbers" [value]="terms">
           Semester - {{terms}}
         </mat-option>
@@ -29,7 +29,6 @@
   </div>
 
   <div class="container">
-    <mat-spinner *ngIf="spinner==1"></mat-spinner>
     <div class="row">
       <hr>
 
@@ -63,18 +62,19 @@
       </div>
     </div>
     <div class="spinner" *ngIf="showSpinner">
-      <mat-spinner></mat-spinner>
+      <mat-spinner *ngIf="showSpinner==true"></mat-spinner>
     </div>
     <!-- Modal -->
     <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
       aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
-          <div class="modal-header">
-            <h3 class="modal-title" id="exampleModalLongTitle"><b>University Exam Details</b></h3>
+          <div class="modal-header" style="background-color: #cccccc;">
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
+              &times;
             </button>
+            <h3 class="modal-title" id="exampleModalLongTitle"><b>University Exam Details</b></h3>
+            
           </div>
           <div class="modal-body">
             <p><b>Course Name : </b>{{modelcourse}}</p>
@@ -89,33 +89,35 @@
       </div>
     </div>
 
-
-</div>
+  </div>
 </ng-container>
 <!-- STUDENT ENDS -->
 
 <!-- FACULTY , HOD , PRINCIPAL STARTS -->
 <ng-template #elseTemplate>
-<!-- <div *ngIf="userRole.includes('FACULTY')"> -->
+  <!-- <div *ngIf="userRole.includes('FACULTY')"> -->
   <div class="row">
     <div class="col-md-2">
       <mat-label class="labels">Academic Year</mat-label>
-      <mat-select [(ngModel)]="selectedyear">
-        <mat-option>--Select Year--</mat-option>
+      <mat-select [(ngModel)]="selectedyear" placeholder="Select year">
+        <!-- <mat-option>Select year</mat-option> -->
         <mat-option *ngFor="let year of academicYears" [value]="year">{{year}}</mat-option>
       </mat-select>
     </div>
     <div class="col-md-2" *ngIf="userRole.includes('PRINCIPAL')">
-      <mat-form-field>
-          <mat-label class="labels">Select Department</mat-label>
-          <mat-select name="years" [(ngModel)]="selectedDepatment">
-              <mat-option *ngFor="let y of departments" [value]="y">{{y}}</mat-option>
-          </mat-select>
-      </mat-form-field>
-  </div>
+      
+      <!-- <mat-form-field> -->
+        <mat-label class="labels">Department</mat-label>
+        <mat-select name="years" [(ngModel)]="selectedDepatment" placeholder="Select department">
+          <!-- <mat-option>Select department</mat-option> -->
+          <mat-option *ngFor="let y of departments" [value]="y">{{y}}</mat-option>
+        </mat-select>
+      <!-- </mat-form-field> -->
+    </div>
     <div class="col-md-2">
       <mat-label class="labels">Semesters</mat-label>
-      <mat-select name="terms"  [(ngModel)]="terms">
+      <mat-select name="terms" [(ngModel)]="terms" placeholder="Select semester">
+        <!-- <mat-option>Select semester</mat-option> -->
         <mat-option *ngFor="let terms of termnumbers" [value]="terms">
           Semester - {{terms}}
         </mat-option>
@@ -131,30 +133,27 @@
     <div class="col-md-6">
     </div>
   </div>
-  
+
   <hr>
 
   <div class="row">
     <div class="col-sm-2 faculty-list text-left" *ngIf="userRole.includes('HOD') || userRole.includes('PRINCIPAL')">
       <div *ngIf="resul.length>0" class="h4 font-weight-bold">Faculties</div>
-    <div>
-      <button class="btn btn-light btn-block text-left faculty" *ngFor="let re of resul"
-        (click)="getFacultyId(re['employeeGivenId'])" >{{re['name']}}
-      </button>
+      <div>
+        <button class="btn btn-light btn-block text-left faculty" *ngFor="let re of resul"
+          (click)="getFacultyId(re['employeeGivenId'],re['name'])">{{re['name']}}
+        </button>
+      </div>
     </div>
-  </div>
-  <ng-container *ngIf="userRole.includes('HOD') || userRole.includes('PRINCIPAL'); else elseTemplate">
+
     <div class="col-md-10">
-  </ng-container>
-  <ng-template #elseTemplate>
-    <div class="col-md-12"></div>
-  </ng-template>
-  
-    
+
+
+
       <!-- <div class="col-md-10"> -->
       <div *ngIf="firstLevelChart && !error_flag && chart_visibility">
         <p class="page-title"><b>{{title}}</b></p>
-        <google-chart [data]='firstLevelChart' data-toggle="modal" data-target="#exampleModalCenter"
+        <google-chart [data]='firstLevelChart' data-toggle="modal" data-target="#ueMarks"
           (chartSelect)="onChartSelect($event)">
         </google-chart>
       </div>
@@ -164,6 +163,51 @@
       </div>
     </div>
   </div>
-<!-- FACULTY , HOD , PRINCIPAL ENDS -->
+<div class="modal fade" id="ueMarks" tabindex="-1" role="dialog"
+      aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header" style="background-color: #cccccc;">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              &times;
+            </button>
+            <h5 class="modal-title">UE & Placement Details</h5>
+            
+          </div>
+          <div class="modal-body">
+            <div class="row col-md-12"> <b>Subject : </b> {{selectedSubject}}</div>
+            <br>
+            <div *ngIf="userRole.includes('HOD') || userRole.includes('PRINCIPAL')">
+              
+            <br>
+            <div class="row">
+              <div *ngIf="userRole.includes('PRINCIPAL')">
+                <div class="col-md-6"> <b>Department : </b> {{selectedDepatment}}</div>
+              </div>
+              
+            <div class="col-md-6"> <b>Faculty : </b> {{facultyName}}</div>
+            </div>
+          </div>
+            <hr>
+            <button class="btn btn-light"><b>UE Score : </b>{{ueMarks}}</button>
+            <hr>
+            <div *ngIf="placementDetails && !userRole.includes('STUDENT')">
+              <div class="col-sm-4"><b># Students : </b>{{placementDetails[0]}}</div>
+              <div class="col-sm-4"><b># Placed Students : </b>{{placementDetails[1]}}</div>
+              <div class="col-sm-4"><b># Offers : </b>{{placementDetails[2]}}</div>
+          </div>
+          </div>
+          <br>
+          <!-- <br> -->
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary" data-dismiss="modal"><i class="far fa-thumbs-up"></i>
+              OK</button>
+          </div>
+        </div>
+      </div>
+    </div>
 
-</ng-template>  
+
+</ng-template>
+
+  <!-- FACULTY , HOD , PRINCIPAL ENDS -->
