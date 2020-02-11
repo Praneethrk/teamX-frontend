@@ -145,12 +145,8 @@
         </button>
       </div>
     </div>
-
-    <div class="col-md-10">
-
-
-
-      <!-- <div class="col-md-10"> -->
+    <ng-container *ngIf="userRole.includes('FACULTY'); else elseTemplate">
+    <div class="col-md-12">
       <div *ngIf="firstLevelChart && !error_flag && chart_visibility">
         <p class="page-title"><b>{{title}}</b></p>
         <google-chart [data]='firstLevelChart' data-toggle="modal" data-target="#ueMarks"
@@ -162,6 +158,25 @@
 
       </div>
     </div>
+    </ng-container>
+    <ng-template #elseTemplate>
+      <div class="col-md-10">
+        <div *ngIf="firstLevelChart && !error_flag && chart_visibility">
+          <p class="page-title"><b>{{title}}</b></p>
+          <google-chart [data]='firstLevelChart' data-toggle="modal" data-target="#ueMarks"
+            (chartSelect)="onChartSelect($event)">
+          </google-chart>
+        </div>
+        <div *ngIf="error_flag">
+          <p class="page-title">{{error_message}}</p>
+  
+        </div>
+      </div>
+    </ng-template>
+
+
+      <!-- <div class="col-md-10"> -->
+      
   </div>
 <div class="modal fade" id="ueMarks" tabindex="-1" role="dialog"
       aria-labelledby="exampleModalCenterTitle" aria-hidden="true">

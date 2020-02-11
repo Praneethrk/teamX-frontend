@@ -5,7 +5,7 @@ import { GoogleChartInterface } from 'ng2-google-charts/google-charts-interfaces
 import { ChartSelectEvent } from 'ng2-google-charts';
 import { templateSourceUrl, ThrowStmt } from '@angular/compiler';
 
-
+declare var $:any;
 @Component({
   selector: 'app-statement4',
   templateUrl: './statement4.component.html',
