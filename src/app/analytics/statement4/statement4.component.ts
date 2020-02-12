@@ -3,7 +3,7 @@ import { AnalyticsService } from '../analytics.service';
 import { AuthService } from 'src/app/auth/auth.service';
 import { GoogleChartInterface } from 'ng2-google-charts/google-charts-interfaces';
 import { ChartSelectEvent } from 'ng2-google-charts';
-import { templateSourceUrl, ThrowStmt } from '@angular/compiler';
+// import { templateSourceUrl, ThrowStmt } from '@angular/compiler';
 
 declare var $: any;
 @Component({
@@ -36,7 +36,7 @@ export class Statement4Component implements OnInit {
   modelScore: any;
   userRole: String[] = [];
   userR: any;
-  facultyId;;
+  facultyId;
   deptName: any;
   facultyNames: any[] = [];
   faculty: boolean = false;
@@ -49,6 +49,7 @@ export class Statement4Component implements OnInit {
   placementDetails;
   ueMarks;
   facultyName;
+  searchStr: any;
   constructor(private analyticsService: AnalyticsService, private authService: AuthService) { }
 
   ngOnInit() {
@@ -348,8 +349,20 @@ export class Statement4Component implements OnInit {
   }
 
   // HOD ENDS 
-
-
-
+  // updateFacultyList(){
+  //   let fa = this.allFaculties
+  //   let newfa = []
+  //   var regex = new RegExp(`^${this.searchStr}.*`, "i"); 
+  //   for(let f of fa){
+  //     let rex = regex.test(f['name'])
+  //     console.log(rex)
+  //     if(rex){
+  //       newfa.push(f)
+  //     }
+  //   }
+  //   console.log(newfa)
+  //   this.faculties = newfa;
+    
+  // }
 
 }

@@ -65,8 +65,8 @@
       <mat-spinner *ngIf="showSpinner"></mat-spinner>
     </div>
     <!-- Modal -->
-    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
-      aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal fade" id="ueMarks" tabindex="-1" role="dialog"
+      aria-labelledby="exampleModalCenterTitle" aria-hidden="true" data-backdrop="static">
       <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
           <div class="modal-header" style="background-color: #cccccc;">
@@ -138,7 +138,11 @@
 
   <div class="row">
     <div class="col-sm-2 faculty-list text-left" *ngIf="userRole.includes('HOD') || userRole.includes('PRINCIPAL')">
-      <div *ngIf="resul.length>0" class="h4 font-weight-bold">Faculties</div>
+      <div *ngIf="resul.length>0" class="h4 font-weight-bold">Faculties <br>
+        <input class="form-control" type="text" 
+        [(ngModel)]="searchStr" placeholder="Search Faculty Name" 
+        (input)="updateFacultyList()">
+      </div>
       <div class="table-wrapper-scroll-y my-custom-scrollbar">
         <button class="btn btn1 btn-light btn-block text-left faculty" *ngFor="let re of resul"
           (click)="getFacultyId(re['employeeGivenId'],re['name'])">{{re['name']}}
