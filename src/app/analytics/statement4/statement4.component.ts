@@ -5,7 +5,7 @@ import { GoogleChartInterface } from 'ng2-google-charts/google-charts-interfaces
 import { ChartSelectEvent } from 'ng2-google-charts';
 import { templateSourceUrl, ThrowStmt } from '@angular/compiler';
 
-declare var $:any;
+declare var $: any;
 @Component({
   selector: 'app-statement4',
   templateUrl: './statement4.component.html',
@@ -23,18 +23,19 @@ export class Statement4Component implements OnInit {
   terms;
   selectedyear;
   user_info;
-  showSpinner = false;
+  showSpinner: boolean = false;
   dept;
   event: any;
   email: any = "";
   offers: any[] = [];
   placement: boolean = false;
+  hr_line: boolean = false;
   ueScore;
   array;
   modelcourse: any;
   modelScore: any;
-  userRole:String[] = [];
-  userR:any;
+  userRole: String[] = [];
+  userR: any;
   facultyId;;
   deptName: any;
   facultyNames: any[] = [];
@@ -107,6 +108,7 @@ export class Statement4Component implements OnInit {
     })
   }
   searchbuttonStud() {
+    this.hr_line = true;
     this.showSpinner = true;
     if (!this.placement) {
 
@@ -128,6 +130,7 @@ export class Statement4Component implements OnInit {
   }
 
   score(data) {
+
     let dataTable = []
     dataTable.push([
       "courseName",
@@ -144,6 +147,7 @@ export class Statement4Component implements OnInit {
     }
     else {
       this.error_flag = true
+      this.showSpinner = false
       this.error_message = "Data doesnot exist for the entered criteria"
     }
 
@@ -152,16 +156,15 @@ export class Statement4Component implements OnInit {
   graph_data(data) {
     let arr = this.user_info["roles"];
     if (this.user_info["roles"] == "STUDENT") {
-      this.showSpinner = false
       var chartwidth = $('#chartparent').width();
-      this.title = 'Course-wise Performence %',
+      this.title = 'Course-wise Performance %',
         this.firstLevelChart = {
           chartType: "ColumnChart",
           dataTable: data,
 
           options: {
-            bar: { groupWidth: "13%" },
-            height: $(window).height()*0.75,
+            bar: { groupWidth: "10%" },
+            height: $(window).height() * 0.75,
             width: chartwidth,
             vAxis: {
               title: "Performance %",
@@ -172,7 +175,7 @@ export class Statement4Component implements OnInit {
               gridlines: { color: '#e0dbda', minSpacing: 50 },
             },
             chartArea: {
-              width:chartwidth,
+              width: chartwidth,
               left: 80,
               right: 80,
               top: 100,
@@ -191,26 +194,27 @@ export class Statement4Component implements OnInit {
 
           }
         }
+      this.showSpinner = false
 
     } else {
       var chartwidth = $('#chartparent').width();
-      this.showSpinner = false;
+
       this.chart_visibility = true;
       this.title = 'Course-wise UE Marks %',
         this.firstLevelChart = {
           chartType: "ComboChart",
           dataTable: data,
-          
+
           options: {
             focusTarget: 'datum',
-            bar: { groupWidth: "20%" },
+            bar: { groupWidth: "10%" },
             vAxis: {
               title: "Percentage",
               scaleType: 'linear',
               maxValue: '100',
               minValue: '0'
             },
-            height: $(window).height()*0.75,
+            height: $(window).height() * 0.75,
             width: chartwidth,
             hAxis: {
               title: "Courses",
@@ -218,7 +222,7 @@ export class Statement4Component implements OnInit {
               }
             },
             chartArea: {
-              width:chartwidth,
+              width: chartwidth,
               left: 80,
               right: 100,
               top: 100,
@@ -228,50 +232,56 @@ export class Statement4Component implements OnInit {
               alignment: "end"
             },
             seriesType: "bars",
-            colors: ["#d3ad5d", "#789d96"],
+            colors: ["#789d96", "#b5956b"],
             fontName: "Times New Roman",
             fontSize: 13,
           }
 
-        }
 
+        }
+      this.showSpinner = false;
     }
 
   }
 
   //On chart select
   onChartSelect(event: ChartSelectEvent) {
-    console.log(event.selectedRowValues)
-    if (this.user_info["roles"] == "STUDENT") {
-      this.array = event.selectedRowFormattedValues;
-      this.modelcourse = this.array[0];
-      this.modelScore = this.array[1];
-    } else {
-      this.array = event.selectedRowFormattedValues;
-      this.selectedSubject = event.selectedRowValues[0]
+    if (event.selectedRowFormattedValues[0]) {
+      console.log(event.selectedRowValues)
+      if (this.user_info["roles"] == "STUDENT") {
+        this.array = event.selectedRowFormattedValues;
+        this.modelcourse = this.array[0];
+        this.modelScore = this.array[1];
+      } else {
+        this.array = event.selectedRowFormattedValues;
+        this.selectedSubject = event.selectedRowValues[0]
         this.analyticsService.get_faculty_stud_ue(this.selectedEmp, this.academicYears, this.terms).subscribe(res => {
           let result = res["res"]
           this.ueMarks = this.array[1]
         },
-        err=>{},
-        ()=>{
-          this.analyticsService.get_faculty_stud_placement(this.selectedEmp,this.terms,this.selectedSubject).subscribe(res=>{
-            this.placementDetails = [res['totalStudents'], res['placedStudents'], res['totalPositions']]
-          },
-          err=>{},
-          ()=>{
-            // $('#iaMarks').modal('toggle')
+          err => { },
+          () => {
+            this.analyticsService.get_faculty_stud_placement(this.selectedEmp, this.terms, this.selectedSubject).subscribe(res => {
+              this.placementDetails = [res['totalStudents'], res['placedStudents'], res['totalPositions']]
+            },
+              err => { },
+              () => {
+                $('#ueMarks').modal('toggle')
+              }
+            )
           }
-          )
-        }
         )
+      }
+    }
+    else{
+      $('#ueMarks').modal('toggle')
     }
   }
   // STUDENT ENDS
 
 
 
-  getFacultyId(empId,empName) {
+  getFacultyId(empId, empName) {
     this.facultyId = empId
     this.facultyName = empName
     console.log(empId);
@@ -282,7 +292,9 @@ export class Statement4Component implements OnInit {
     if (this.userR == "FACULTY") {
       this.get_faculty_stud_ue(this.user_info['employeeGivenId']);
     } else {
+      this.showSpinner = false;
       this.get_faculty_details();
+
       if (this.search) {
         this.get_faculty_stud_ue(this.facultyId);
       }
@@ -292,7 +304,7 @@ export class Statement4Component implements OnInit {
 
   }
   get_faculty_details() {
-    if (this.userR == "FACULTY" ||this.userR == "HOD") {
+    if (this.userR == "FACULTY" || this.userR == "HOD") {
       let arr = this.user_info['employeeGivenId'];
       let patt = new RegExp("[a-zA-z]*");
       let res = patt.exec(arr);
@@ -311,7 +323,6 @@ export class Statement4Component implements OnInit {
 
   getEmpChart(empid) {
     this.selectedEmp = empid
-    this.showSpinner = true;
     this.chart_visibility = false;
     let subs;
     let data = [["Subject Name", "UE Performance", "Placement"]]
@@ -331,6 +342,7 @@ export class Statement4Component implements OnInit {
         else {
           this.showSpinner = false
           this.error_flag = true
+          this.error_message = "Data doesnot exist for the entered criteria"
         }
       })
   }

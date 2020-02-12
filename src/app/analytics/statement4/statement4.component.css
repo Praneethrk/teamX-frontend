@@ -22,8 +22,23 @@
    text-align: left;
  }
 
-.spinner{
-  margin: auto;
+ .spinner{
+  /* position: absolute; */
+  height: 100px;
+  width: 100px;
+  margin-top: 8%;
+  margin-left: 50%;
+  /* margin-left: -50px;
+  margin-top: -50px; */
+}
+.spinner1{
+  /* position: absolute; */
+  height: 100px;
+  width: 100px;
+  margin-top: 20%;
+  margin-left: 50%;
+  /* margin-left: -50px;
+  margin-top: -50px; */
 }
 
 .table-wrapper-scroll-y{
@@ -34,4 +49,9 @@
   position: relative;
   height: 600px;
   overflow: auto;
+}
+
+.btn1:active , .btn1:focus{
+  background-color: #76323f;
+  color: white;
 }
