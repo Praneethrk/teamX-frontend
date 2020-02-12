@@ -139,7 +139,7 @@
   <div class="row">
     <div class="col-sm-2 faculty-list text-left" *ngIf="userRole.includes('HOD') || userRole.includes('PRINCIPAL')">
       <div *ngIf="resul.length>0" class="h4 font-weight-bold">Faculties</div>
-      <div>
+      <div class="table-wrapper-scroll-y my-custom-scrollbar">
         <button class="btn btn-light btn-block text-left faculty" *ngFor="let re of resul"
           (click)="getFacultyId(re['employeeGivenId'],re['name'])">{{re['name']}}
         </button>

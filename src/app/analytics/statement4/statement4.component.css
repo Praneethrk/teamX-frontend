@@ -25,3 +25,13 @@
 .spinner{
   margin: auto;
 }
+
+.table-wrapper-scroll-y{
+  display: block;
+}
+
+.my-custom-scrollbar{
+  position: relative;
+  height: 600px;
+  overflow: auto;
+}
