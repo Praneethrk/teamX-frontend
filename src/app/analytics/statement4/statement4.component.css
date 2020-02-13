@@ -52,6 +52,11 @@
 }
 
 .btn1:active , .btn1:focus{
+  opacity: 0.9;
   background-color: #76323f;
   color: white;
+}
+
+.search1{
+  border-radius: 10px;
 }

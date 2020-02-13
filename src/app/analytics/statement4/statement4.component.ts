@@ -50,6 +50,7 @@ export class Statement4Component implements OnInit {
   ueMarks;
   facultyName;
   searchStr: any;
+  allFaculties: String[];
   constructor(private analyticsService: AnalyticsService, private authService: AuthService) { }
 
   ngOnInit() {
@@ -316,12 +317,28 @@ export class Statement4Component implements OnInit {
     }
     this.analyticsService.get_dept_faculty(this.deptName).subscribe(res => {
       this.resul = res['res'];
+      this.allFaculties = this.resul
     })
   }
   get_faculty_stud_ue(facultyId) {
     this.getEmpChart(facultyId);
   }
 
+  updateFacultyList(){
+    let fa = this.allFaculties
+    let newfa = []
+    var regex = new RegExp(`^${this.searchStr}.*`, "i"); 
+    for(let f of fa){
+      let rex = regex.test(f['name'])
+      console.log(rex)
+      if(rex){
+        newfa.push(f)
+      }
+    }
+    console.log(newfa)
+    this.resul = newfa;
+    
+  }
   getEmpChart(empid) {
     this.selectedEmp = empid
     this.chart_visibility = false;
