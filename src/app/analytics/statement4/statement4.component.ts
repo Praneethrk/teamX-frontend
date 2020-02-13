@@ -165,35 +165,35 @@ export class Statement4Component implements OnInit {
           dataTable: data,
 
           options: {
+            focusTarget: 'datum',
             bar: { groupWidth: "10%" },
-            height: $(window).height() * 0.75,
-            width: chartwidth,
             vAxis: {
-              title: "Performance %",
-              gridlines: { color: '#e0dbda', minSpacing: 50 },
+              title: "Percentage",
+              scaleType: 'linear',
+              maxValue: '100',
+              minValue: '0'
             },
+            height: "450",
+            width: chartwidth,
             hAxis: {
               title: "Courses",
-              gridlines: { color: '#e0dbda', minSpacing: 50 },
+              titleTextStyle: {
+              }
             },
             chartArea: {
               width: chartwidth,
               left: 80,
-              right: 80,
+              right: 100,
               top: 100,
-              // backgroundColor:"#faf6f2",
             },
             legend: {
-
               position: "top",
               alignment: "end"
             },
             seriesType: "bars",
-            colors: ["#669999"],
+            colors: ["#789d96", "#b5956b"],
             fontName: "Times New Roman",
             fontSize: 13,
-            focusTarget: "datum",
-
           }
         }
       this.showSpinner = false

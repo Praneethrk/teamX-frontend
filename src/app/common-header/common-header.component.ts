@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CommonHeaderService } from './common-header.service';
 import { AppComponent } from '../app.component';
 import { AuthService } from '../auth/auth.service';
+import { AnalyticsService } from '../analytics/analytics.service';
 declare var $:any;
 @Component({
   selector: 'app-common-header',
@@ -15,14 +16,30 @@ export class CommonHeaderComponent implements OnInit {
   tenantName: string;
   user;
   anotherRole = false;
-  constructor(public commonHeaderService: CommonHeaderService, private appComponent: AppComponent,private authService:AuthService) { }
+  userName: any;
+  userRole: any;
+  
+  constructor(public commonHeaderService: CommonHeaderService, private appComponent: AppComponent,private authService:AuthService,  private analyticsService: AnalyticsService) { }
 
   ngOnInit() {
     this.authService.tanentDetails.subscribe(name => this.tenantName = name);
 
     
     this.user = this.authService.getUserInfo();
-    console.log("User infor"+this.user['user']);
+    let arr = this.user["roles"];
+    this.get_name_by_email(this.user['user'])
+    if (this.user["roles"] == "STUDENT") {
+      this.userRole = this.user["roles"]
+    }
+    else if (arr[0] == "FACULTY" && arr[2] == "PRINCIPAL") {
+      this.userRole = arr[2]
+    }
+    else if (arr[2] == "HOD") {
+      this.userRole = arr[2]
+    }
+    else if (arr[0] == "FACULTY") {
+      this.userRole = arr[0]
+    }
     
    
   }
@@ -34,6 +51,13 @@ export class CommonHeaderComponent implements OnInit {
 
   changeRole(role: string) {
 
+  }
+
+  get_name_by_email(email){
+    this.analyticsService.get_user_name_by_email(email).subscribe(res=>{
+      this.userName = res['name']
+      console.log(this.userName)
+    })
   }
 
   resize() {

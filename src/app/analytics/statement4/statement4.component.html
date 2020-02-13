@@ -52,7 +52,7 @@
     <div class="row">
       <div *ngIf="firstLevelChart && !error_flag && chart_visibility">
         <p class="page-title"><b>{{title}}</b></p>
-        <google-chart [data]='firstLevelChart' data-toggle="modal" data-target="#exampleModalCenter"
+        <google-chart id="chart" [data]='firstLevelChart' data-toggle="modal" data-target="#exampleModalCenter"
           (chartSelect)="onChartSelect($event)">
         </google-chart>
       </div>

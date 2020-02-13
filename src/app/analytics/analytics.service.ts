@@ -54,4 +54,11 @@ export class AnalyticsService {
     let uri = `${this.baseurl}depts`
     return this.http.get(uri)
   }
+
+  get_user_name_by_email(email):Observable<any>{
+    let uri = `${this.baseurl}getUserNameEmail/${email}`
+    return this.http.get<any>(uri)
+  }
+
+
 }

@@ -7,7 +7,7 @@
             <a href="#" class="sidebar-toggle" data-toggle="control-sidebar" role="button" (click)="resize()">
                 <span class="sr-only">Toggle navigation</span>
             </a>
-            <span style=" color:#ffffff !important; margin-left: 1030px;" *ngIf="user">{{user.user}}
+            <span style=" color:#ffffff !important; margin-left: 1030px;" *ngIf="user">&nbsp;{{user.user}} &nbsp;[{{user.roles}}]
             </span>
             <i style=" color:#ffffff !important;" class="fas fa-sign-out-alt ml-auto" (click)="logOut()"></i>
         </nav>

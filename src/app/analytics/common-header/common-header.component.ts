@@ -3,6 +3,8 @@ import { CommonHeaderService } from './common-header.service';
 
 import { AuthService } from 'src/app/auth/auth.service';
 import { AppComponent } from 'src/app/app.component';
+import { AnalyticsService } from '../analytics.service';
+
 declare var $:any;
 @Component({
   selector: 'app-common-header',
@@ -16,7 +18,8 @@ export class CommonHeaderComponent implements OnInit {
   tenantName: string;
   user;
   anotherRole = false;
-  constructor(public commonHeaderService: CommonHeaderService, private appComponent: AppComponent,private authService:AuthService) { }
+  userName: any;
+  constructor(public commonHeaderService: CommonHeaderService, private appComponent: AppComponent,private authService:AuthService, private analyticsService: AnalyticsService) { }
 
   ngOnInit() {
     this.authService.tanentDetails.subscribe(name => this.tenantName = name);
@@ -24,7 +27,7 @@ export class CommonHeaderComponent implements OnInit {
     
     this.user = this.authService.getUserInfo();
     console.log("User infor"+this.user['user']);
-    
+    this.get_name_by_email(this.user['user'])
    
   }
 
@@ -35,6 +38,12 @@ export class CommonHeaderComponent implements OnInit {
 
   changeRole(role: string) {
 
+  }
+  get_name_by_email(email){
+    this.analyticsService.get_user_name_by_email(email).subscribe(res=>{
+      this.userName = res['name']
+      console.log(this.userName)
+    })
   }
 
   resize() {

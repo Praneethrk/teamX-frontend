@@ -287,7 +287,7 @@ input.input-search {
 }
 
 .panel-shadow {
-  box-shadow: 0 6px 12px rgba(0,0,0,.175);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
   border: 1px solid #ccc;
 }
 
@@ -328,6 +328,7 @@ input.input-search {
   cursor: pointer !important;
   color: #00303f !important;
 }
+
 .usertext1 {
   cursor: pointer !important;
   color: #00303f !important;
@@ -391,3 +392,4 @@ input.input-search {
   padding-left: 0px !important;
   color: #00303f;
 }
+
