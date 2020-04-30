@@ -26,7 +26,7 @@
     "bootstrap-timepicker": "^0.5.2",
     "bootstrap-tokenfield": "^0.12.0",
     "hammerjs": "^2.0.8",
-    "jquery": "^3.2.1",
+    "jquery": "^3.5.0",
     "jquery-datatables-checkboxes": "^1.2.4",
     "jquery-slimscroll": "^1.3.8",
     "jquery-timepicker": "^1.3.3",
